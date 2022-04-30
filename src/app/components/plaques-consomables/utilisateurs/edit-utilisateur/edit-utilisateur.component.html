@@ -1,0 +1,24 @@
+<div class="container mt-3 mb-3" *ngIf="userFormGroup">
+  <div class="card w-50">
+    <div class="card-header">modifier utilisateur</div>
+    <div class="card-body">
+      <form [formGroup]="userFormGroup">
+          <label class="form-label">username:</label>
+          <input  type="text" class="form-control" formControlName="username">
+          <label class="form-label">nom:</label>
+          <input  type="text" class="form-control" formControlName="nom">
+          <label class="form-label">prenom:</label>
+          <input  type="text" class="form-control" formControlName="prenom">
+          <label class="form-label">mail:</label>
+          <input  type="text" class="form-control" formControlName="mail">
+          <label class="form-label">phone:</label>
+          <input  type="tel" class="form-control" formControlName="phone">
+          <label class="form-label">date de naissance:</label>
+          <input  type="date" class="form-control" formControlName="dateNaissance">
+          <label class="form-label">password:</label>
+          <input  type="password" class="form-control" formControlName="password">
+          <button class="btn btn-primary mt-2" (click)="onUpdateUser()">update</button>
+      </form>
+    </div>
+  </div>
+</div>
