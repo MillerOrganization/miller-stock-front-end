@@ -10,7 +10,11 @@ import { UtilisateursComponent } from './components/plaques-consomables/utilisat
 import {HttpClientModule} from "@angular/common/http";
 import { EditUtilisateurComponent } from './components/plaques-consomables/utilisateurs/edit-utilisateur/edit-utilisateur.component';
 import { AddUtilisateurComponent } from './components/plaques-consomables/utilisateurs/add-utilisateur/add-utilisateur.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { EditPlaque2Component } from './components/plaques-consomables/plaques/edit-plaque2/edit-plaque2.component';
+import { NavPlaqueComponent } from './components/plaques-consomables/plaques/nav-plaque/nav-plaque.component';
+import { NewPlaqueComponent } from './components/plaques-consomables/plaques/new-plaque/new-plaque.component';
+import { NewChuteComponent } from './components/plaques-consomables/plaques/new-chute/new-chute.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +24,18 @@ import {ReactiveFormsModule} from "@angular/forms";
     PlaquesComponent,
     UtilisateursComponent,
     EditUtilisateurComponent,
-    AddUtilisateurComponent
+    AddUtilisateurComponent,
+    EditPlaque2Component,
+    NavPlaqueComponent,
+    NewPlaqueComponent,
+    NewChuteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

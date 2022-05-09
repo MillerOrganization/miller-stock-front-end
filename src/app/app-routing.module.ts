@@ -8,11 +8,20 @@ import {
 import {
   AddUtilisateurComponent
 } from "./components/plaques-consomables/utilisateurs/add-utilisateur/add-utilisateur.component";
+import {PlaquesComponent} from "./components/plaques-consomables/plaques/plaques.component";
+import {EditPlaque2Component} from "./components/plaques-consomables/plaques/edit-plaque2/edit-plaque2.component";
+import {NewChuteComponent} from "./components/plaques-consomables/plaques/new-chute/new-chute.component";
+import {NewPlaqueComponent} from "./components/plaques-consomables/plaques/new-plaque/new-plaque.component";
+
 
 const routes: Routes = [
   {path:"utilisateurs",component:UtilisateursComponent},
+  {path:"plaques",component:PlaquesComponent},
   {path:"edit-utilisateur/:url",component:EditUtilisateurComponent},
-  {path:"add-utilisateur",component:AddUtilisateurComponent}
+  {path:"add-utilisateur",component:AddUtilisateurComponent},
+  {path:"edit-plaque/:id",component:EditPlaque2Component},
+  {path:"new-chute",component:NewChuteComponent},
+  {path:"new-plaque",component:NewPlaqueComponent}
 ];
 
 @NgModule({

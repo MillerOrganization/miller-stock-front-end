@@ -1,0 +1,27 @@
+<div class="container" >
+  <div class="card">
+    <div class="card-header">modifier plaque</div>
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="onAddPlaque(f)">
+        <label class="form-label">numero d'article</label>
+        <input  type="number" class="form-control" ngModel name="numeroArticle">
+        <label class="form-label">designation:</label>
+        <input  type="text" class="form-control" ngModel name="designation">
+        <label class="form-label">groupe d'article:</label>
+        <select type="number" class="form-control" name="groupeArticle" ngModel>
+          <option *ngFor="let gr of groupesArticle?._embedded?.groupeArticles" value={{gr.id}}>
+            {{gr.designation}}
+          </option>
+        </select>
+        <label class="form-label">longueur:</label>
+        <input  type="number" class="form-control" ngModel name="longueur">
+        <label class="form-label">largeur:</label>
+        <input  type="number" class="form-control" ngModel name="largeur">
+        <label class="form-label">quantite:</label>
+        <input type="number" class="form-control" ngModel name="quantite">
+        <input type="hidden" class="form-control" ngModel name="quantiteMoisPrecedent">
+        <button class="btn btn-primary mt-2">modifier</button>
+      </form>
+    </div>
+  </div>
+</div>

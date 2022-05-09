@@ -1,0 +1,44 @@
+<div class="container" >
+  <div class="card">
+    <div class="card-header">modifier plaque</div>
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="onUpdatePlaque(f)">
+        <input type="hidden"  [(ngModel)]="plaque.id"  name="id">
+        <label class="form-label">numero d'article</label>
+        <input  type="number" class="form-control" [(ngModel)]="plaque.numeroArticle" name="numeroArticle">
+        <label class="form-label">designation:</label>
+        <input  type="text" class="form-control" [(ngModel)]="plaque.designation" name="designation">
+        <label class="form-label">groupe d'article:</label>
+        <select type="number" class="form-control" name="groupeArticle" [(ngModel)]="plaque.groupeArticle.id">
+          <option *ngFor="let gr of groupesArticle?._embedded?.groupeArticles" [value]="gr.id">
+            {{gr.designation}}
+          </option>
+        </select>
+        <input type="hidden" [(ngModel)]="plaque.type" name="type">
+        <ng-template [ngIf]="plaque?.taille" [ngIfElse]="chute">
+          <label class="form-label">taille:</label>
+          <select
+            class="form-control form-control-sm"
+            [(ngModel)]="plaque.taille.id"
+            name="taille" >
+            <option value="" disabled selected>Select your option</option>
+            <option *ngFor="let taille of taillePlaques?._embedded?.taillePlaques"
+                    [value] ="taille.id" >
+              {{taille.designation}}
+            </option>
+          </select>
+        </ng-template>
+        <ng-template #chute>
+          <label class="form-label">longueur:</label>
+          <input  type="number" class="form-control" [(ngModel)]="plaque.longueur" name="longueur">
+          <label class="form-label">largeur:</label>
+          <input  type="number" class="form-control" [(ngModel)]="plaque.largeur" name="largeur">
+        </ng-template>
+        <label class="form-label">quantite:</label>
+        <input type="number" class="form-control" [(ngModel)]="plaque.quantite" name="quantite">
+        <input type="hidden" class="form-control" [(ngModel)]="plaque.quantiteMoisPrecedent" name="quantiteMoisPrecedent">
+        <button class="btn btn-primary mt-2">modifier</button>
+      </form>
+    </div>
+  </div>
+</div>
