@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PlaquesConsommablesService} from "../../../../services/plaques-consommables.service";
 import {Router} from "@angular/router";
 import {environment} from "../../../../environments/environment";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-utilisateurs',
@@ -21,8 +22,6 @@ export class UtilisateursComponent implements OnInit {
     this.plaquesConsommablesService.getResources(environment.host+"/utilisateurs")
       .subscribe(data=>{
         this.utilisateurs=data;
-      },error => {
-        console.log(error);
       });
   }
 
@@ -33,7 +32,7 @@ export class UtilisateursComponent implements OnInit {
     if(conf){
       this.plaquesConsommablesService.deleteResource(host).subscribe(data=>{
           this.onGetAllUtilisateurs();
-      },error => console.log(error))
+      });
     }
 
     //console.log(host);
@@ -44,5 +43,16 @@ export class UtilisateursComponent implements OnInit {
     this.router.navigateByUrl("edit-utilisateur/"+url);
     //url=atob(url);
     //console.log(url);
+  }
+
+  onSearch(f: NgForm) {
+    this.plaquesConsommablesService.getResources(environment.host+"/utilisateurs/search/byKeyword?kw="
+      +f.value.keyword).subscribe(data=>{
+        this.utilisateurs=data;
+    });
+  }
+
+  onAddUtilisateur() {
+    this.router.navigateByUrl("add-utilisateur");
   }
 }

@@ -17,7 +17,6 @@ export class EditUtilisateurComponent implements OnInit {
               private fb:FormBuilder,
               private router:Router) {
     this.url=atob(this.activatedRoute.snapshot.params?.['url']);
-    console.log(this.url);
   }
 
   ngOnInit(): void {
@@ -36,8 +35,8 @@ export class EditUtilisateurComponent implements OnInit {
   }
 
   onUpdateUser() {
-    this.plaquesConsomablesService.updateResource(this.url,this.userFormGroup?.value).subscribe(data=>
-    {
+    this.plaquesConsomablesService.updateResourceByPatch(this.url,this.userFormGroup?.value)
+      .subscribe(data=> {
       alert("updated successfully");
       this.router.navigateByUrl("utilisateurs");
     });

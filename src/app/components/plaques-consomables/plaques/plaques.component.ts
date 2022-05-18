@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PlaquesConsommablesService} from "../../../../services/plaques-consommables.service";
 import {environment} from "../../../../environments/environment";
 import {Router} from "@angular/router";
+import {stringify} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-plaques',
@@ -35,5 +36,18 @@ export class PlaquesComponent implements OnInit {
   onUpdatePlaque(plaque: any) {
     this.router.navigateByUrl("edit-plaque/"+plaque?.id);
 
+  }
+
+  onSearch(value: any) {
+    console.log(value.longueur+" "+value.largeur);
+    this.plaquesConsommablesService.getResources(environment.host+"/plaque/find?longueur="+value.longueur+"&"+
+    "largeur="+value.largeur).subscribe(data=>{
+      this.plaques=data;
+    });
+  }
+
+  onUsePlaque(plaque: any) {
+    this.router.navigateByUrl("consommer-plaque/"+plaque.id+"/"+1);
+    //this.router.navigate(['consommer-plaque',plaque.id,stringify(1)]);
   }
 }

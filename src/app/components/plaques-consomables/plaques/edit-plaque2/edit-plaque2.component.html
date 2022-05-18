@@ -3,17 +3,19 @@
     <div class="card-header">modifier plaque</div>
     <div class="card-body">
       <form #f="ngForm" (ngSubmit)="onUpdatePlaque(f)">
-        <input type="hidden"  [(ngModel)]="plaque.id"  name="id">
+        <input name="id" type="hidden" [(ngModel)]="plaque.id" >
+        <label class="form-label">designation:</label>
+        <select type="number" class="form-control" name="listPlaques" [(ngModel)]="plaque.listPlaques.id" >
+          <option *ngFor="let p of listPlaques?._embedded?.listPlaqueses" [value]="p.id">
+            {{p.designation}}
+          </option>
+        </select>
+        <!--<input type="hidden"  [(ngModel)]="plaque.id"  name="id">
         <label class="form-label">numero d'article</label>
         <input  type="number" class="form-control" [(ngModel)]="plaque.numeroArticle" name="numeroArticle">
         <label class="form-label">designation:</label>
         <input  type="text" class="form-control" [(ngModel)]="plaque.designation" name="designation">
-        <label class="form-label">groupe d'article:</label>
-        <select type="number" class="form-control" name="groupeArticle" [(ngModel)]="plaque.groupeArticle.id">
-          <option *ngFor="let gr of groupesArticle?._embedded?.groupeArticles" [value]="gr.id">
-            {{gr.designation}}
-          </option>
-        </select>
+        <label class="form-label">groupe d'article:</label>-->
         <input type="hidden" [(ngModel)]="plaque.type" name="type">
         <ng-template [ngIf]="plaque?.taille" [ngIfElse]="chute">
           <label class="form-label">taille:</label>

@@ -1,0 +1,36 @@
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">ajouter une plaque</h4>
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span class="fa fa-close"></span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-add-list-plaque (newItemEvent)="onClose($event)"></app-add-list-plaque>
+  </div>
+</ng-template>
+
+<div class="p-4">
+  <div class="card">
+    <div class="card-header">Liste des plaques</div>
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="onSearch(f)" class="form-inline">
+        <input placeholder="keyword" ngModel name="keyword"/>
+        <button class="btn btn-outline-success"><span class="fa fa-search"></span></button>
+      </form>
+      <button class="btn btn-primary" (click)="open(mymodal)"><span class="fa fa-plus"></span></button>
+      <table class="table">
+        <tr>
+          <th>Numero d'article</th><th>Désignation</th><th>Groupe d'article</th>
+        </tr>
+        <tr *ngFor="let plaque of listPlaques">
+          <td>{{plaque?.numeroArticle}}</td>
+          <td>{{plaque?.designation}}</td>
+          <td>{{plaque?.groupeArticle?.designation}}</td>
+          <td><a class="btn btn-outline-danger" (click)="onDeletePlaque(plaque)"><i class="fa fa-trash"></i></a></td>
+          <td><a class="btn btn-outline-warning" (click)="onEditPlaque(plaque)"><i class="fa fa-edit"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

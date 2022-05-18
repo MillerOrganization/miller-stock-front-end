@@ -25,4 +25,8 @@ export class PlaquesConsommablesService {
   newResource(url:string,resource:any):Observable<any>{
     return this.http.post(url,resource);
   }
+
+  updateResourceByPatch(url:string, resource:any):Observable<any>{
+    return this.http.patch(url,resource);
+  }
 }

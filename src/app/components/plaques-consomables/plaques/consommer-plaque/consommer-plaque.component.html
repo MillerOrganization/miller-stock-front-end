@@ -1,0 +1,16 @@
+<p>consommer-plaque works!</p>
+
+<div class="card">
+  <div class="card-header">
+   Consommer une plaque
+  </div>
+  <div class="card-body">
+    <ng-container *ngIf="consommerPlaqueFromGroup">
+      <form [formGroup]="consommerPlaqueFromGroup">
+        <label class="form-label">quantite:</label>
+        <input  type="number" class="form-control" formControlName="quantite">
+        <button class="btn btn-success mt-2" (click)="consommer()">consommer</button>
+      </form>
+    </ng-container>
+  </div>
+</div>

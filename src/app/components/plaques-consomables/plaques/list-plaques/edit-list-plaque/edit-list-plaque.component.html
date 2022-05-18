@@ -1,0 +1,21 @@
+<p>{{plaqueFormGroup?.value | json}}</p>
+<div class="container mt-3 mb-3" *ngIf="plaqueFormGroup">
+  <div class="card w-50">
+    <div class="card-header">modifier utilisateur</div>
+    <div class="card-body">
+      <form [formGroup]="plaqueFormGroup">
+        <label class="form-label">numeroArticle:</label>
+        <input  type="text" class="form-control" formControlName="numeroArticle">
+        <label class="form-label">designation:</label>
+        <input  type="text" class="form-control" formControlName="designation">
+        <label class="form-label">groupe d'article:</label>
+        <select type="number" class="form-control" name="listPlaques" formControlName="groupeArticle" >
+          <option *ngFor="let gr of groupeArticles" [value]="gr._links.self.href">
+            {{gr.designation}}
+          </option>
+        </select>
+        <button class="btn btn-primary mt-2" (click)="onUpdatePlaque()">update</button>
+      </form>
+    </div>
+  </div>
+</div>

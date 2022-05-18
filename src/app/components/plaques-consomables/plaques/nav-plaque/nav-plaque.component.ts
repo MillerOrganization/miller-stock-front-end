@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 export class NavPlaqueComponent implements OnInit {
 
   constructor(private router:Router) { }
-
+  @Output() newItemEvent=new EventEmitter();
   ngOnInit(): void {
   }
 
@@ -19,5 +19,13 @@ export class NavPlaqueComponent implements OnInit {
 
   onNewChute() {
     this.router.navigateByUrl("new-chute");
+  }
+
+  onSearch(value: any) {
+    this.newItemEvent.emit(value);
+  }
+
+  onListPlaques() {
+    this.router.navigateByUrl("list-plaques");
   }
 }

@@ -2,6 +2,11 @@
    <div class="card">
      <div class="card-header">liste des utilisateurs</div>
      <div class="card-body">
+       <form #f="ngForm" (ngSubmit)="onSearch(f)" class="form-inline">
+         <input placeholder="keyword" ngModel name="keyword"/>
+         <button class="btn btn-outline-success"><span class="fa fa-search"></span></button>
+       </form>
+       <button class="btn btn-primary" (click)="onAddUtilisateur()"><span class="fa fa-plus"></span></button>
       <table class="table">
         <tr>
           <th>Nom</th><th>Prénom</th><th>Username</th><th>mail</th><th>telephone</th>

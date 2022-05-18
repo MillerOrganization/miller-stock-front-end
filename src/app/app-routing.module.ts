@@ -12,6 +12,13 @@ import {PlaquesComponent} from "./components/plaques-consomables/plaques/plaques
 import {EditPlaque2Component} from "./components/plaques-consomables/plaques/edit-plaque2/edit-plaque2.component";
 import {NewChuteComponent} from "./components/plaques-consomables/plaques/new-chute/new-chute.component";
 import {NewPlaqueComponent} from "./components/plaques-consomables/plaques/new-plaque/new-plaque.component";
+import {ListPlaquesComponent} from "./components/plaques-consomables/plaques/list-plaques/list-plaques.component";
+import {
+  EditListPlaqueComponent
+} from "./components/plaques-consomables/plaques/list-plaques/edit-list-plaque/edit-list-plaque.component";
+import {
+  ConsommerPlaqueComponent
+} from "./components/plaques-consomables/plaques/consommer-plaque/consommer-plaque.component";
 
 
 const routes: Routes = [
@@ -21,7 +28,10 @@ const routes: Routes = [
   {path:"add-utilisateur",component:AddUtilisateurComponent},
   {path:"edit-plaque/:id",component:EditPlaque2Component},
   {path:"new-chute",component:NewChuteComponent},
-  {path:"new-plaque",component:NewPlaqueComponent}
+  {path:"new-plaque",component:NewPlaqueComponent},
+  {path:"list-plaques",component:ListPlaquesComponent},
+  {path:"edit-list-plaque/:url",component:EditListPlaqueComponent},
+  {path:"consommer-plaque/:idPlaque/:idUser",component:ConsommerPlaqueComponent}
 ];
 
 @NgModule({

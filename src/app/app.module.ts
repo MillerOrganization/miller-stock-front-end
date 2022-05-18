@@ -15,6 +15,11 @@ import { EditPlaque2Component } from './components/plaques-consomables/plaques/e
 import { NavPlaqueComponent } from './components/plaques-consomables/plaques/nav-plaque/nav-plaque.component';
 import { NewPlaqueComponent } from './components/plaques-consomables/plaques/new-plaque/new-plaque.component';
 import { NewChuteComponent } from './components/plaques-consomables/plaques/new-chute/new-chute.component';
+import { ListPlaquesComponent } from './components/plaques-consomables/plaques/list-plaques/list-plaques.component';
+import { EditListPlaqueComponent } from './components/plaques-consomables/plaques/list-plaques/edit-list-plaque/edit-list-plaque.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { AddListPlaqueComponent } from './components/plaques-consomables/plaques/list-plaques/add-list-plaque/add-list-plaque.component';
+import { ConsommerPlaqueComponent } from './components/plaques-consomables/plaques/consommer-plaque/consommer-plaque.component';
 
 @NgModule({
   declarations: [
@@ -28,14 +33,19 @@ import { NewChuteComponent } from './components/plaques-consomables/plaques/new-
     EditPlaque2Component,
     NavPlaqueComponent,
     NewPlaqueComponent,
-    NewChuteComponent
+    NewChuteComponent,
+    ListPlaquesComponent,
+    EditListPlaqueComponent,
+    AddListPlaqueComponent,
+    ConsommerPlaqueComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

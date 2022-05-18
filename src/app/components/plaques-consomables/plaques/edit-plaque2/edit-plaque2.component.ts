@@ -14,6 +14,7 @@ export class EditPlaque2Component implements OnInit {
   taillePlaques: any;
   id: number;
   plaque: any;
+  listPlaques: any;
 
   constructor(private pcService:PlaquesConsommablesService,
   private activatedRoute:ActivatedRoute,
@@ -34,15 +35,17 @@ export class EditPlaque2Component implements OnInit {
       this.groupesArticle=data;
       console.log(this.groupesArticle);
     });
+    this.pcService.getResources(environment.host+"/listPlaqueses").subscribe(data=>{
+      this.listPlaques=data;
+      console.log(this.listPlaques);
+    });
   }
 
   createRequest(f:NgForm):any{
     if(f.value.type==='chute'){
       return {
         id:f.value.id,
-        numeroArticle:f.value.numeroArticle,
-        designation:f.value.designation,
-        groupeArticle:{id:f.value.groupeArticle},
+        listPlaques:{id:f.value.listPlaques},
         type:f.value.type,
         longueur:f.value.longueur,
         largeur:f.value.largeur,
@@ -52,9 +55,7 @@ export class EditPlaque2Component implements OnInit {
     }else
     return {
       id:f.value.id,
-      numeroArticle:f.value.numeroArticle,
-      designation:f.value.designation,
-      groupeArticle:{id:f.value.groupeArticle},
+      listPlaques:{id:f.value.listPlaques},
       type:f.value.type,
       taille:{id:f.value.taille},
       quantite:f.value.quantite,

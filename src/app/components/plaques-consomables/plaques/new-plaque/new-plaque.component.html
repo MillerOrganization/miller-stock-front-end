@@ -3,14 +3,10 @@
     <div class="card-header">ajouter plaque</div>
     <div class="card-body">
       <form #f="ngForm" (ngSubmit)="onAddPlaque(f)">
-        <label class="form-label">numero d'article</label>
-        <input  type="number" class="form-control" ngModel name="numeroArticle">
         <label class="form-label">designation:</label>
-        <input  type="text" class="form-control" ngModel name="designation">
-        <label class="form-label">groupe d'article:</label>
-        <select type="number" class="form-control" ngModel name="groupeArticle">
-          <option *ngFor="let gr of groupesArticle?._embedded?.groupeArticles" [value]="gr.id">
-            {{gr.designation}}
+        <select type="number" class="form-control" name="listPlaques" ngModel>
+          <option *ngFor="let p of listPlaques?._embedded?.listPlaqueses" [value]="p.id">
+            {{p.designation}}
           </option>
         </select>
         <input type="hidden" name="type">
