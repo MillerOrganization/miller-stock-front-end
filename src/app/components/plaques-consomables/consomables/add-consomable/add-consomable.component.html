@@ -1,0 +1,13 @@
+<div class="container mt-3 mb-3" *ngIf="consomableFormGroup">
+  <form [formGroup]="consomableFormGroup">
+    <label class="form-label">designation:</label>
+    <select  class="form-control" formControlName="listConsomable">
+      <option *ngFor="let p of listConsomables?._embedded?.listConsomables" [value]="p._links.self.href">
+        {{p.designation}}
+      </option>
+    </select>
+    <label class="form-label">quantite:</label>
+    <input type="number" class="form-control" formControlName="quantite">
+    <button class="btn btn-primary mt-2" (click)="addConsomable()">ajouter</button>
+  </form>
+</div>

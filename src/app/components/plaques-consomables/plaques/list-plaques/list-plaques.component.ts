@@ -93,10 +93,10 @@ export class ListPlaquesComponent implements OnInit {
     }
   }
 
-  onClose(event: any) {
+  onClose(event: any, modal: any) {
     //console.log(event);
     this.onGetAllListPlaques();
-    this.modalService.dismissAll();
+    modal.dismiss('Cross click');
   }
 
   setModalRef(modalRef:any){

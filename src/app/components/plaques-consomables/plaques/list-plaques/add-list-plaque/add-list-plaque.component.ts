@@ -19,18 +19,21 @@ export class AddListPlaqueComponent implements OnInit {
   ngOnInit(): void {
     this.plaqueFormGroup=this.fb.group({
       designation:['',Validators.required],
-      groupeArticle:['',Validators.required],
+      groupeArticle:[0,Validators.required],
       numeroArticle:['',Validators.required]
     });
     this.pcService.getResources(environment.host+"/groupeArticles").subscribe(data=>{
       this.groupeArticles=data?._embedded?.groupeArticles;
     });
+
   }
 
   onAddPlaque() {
+    if(this.plaqueFormGroup?.value.numeroArticle>=0)
     this.pcService.newResource(environment.host+"/listPlaqueses",this.plaqueFormGroup?.value).subscribe(data=>{
         alert("added succesfully");
         this.newItemEvent.emit("close");
     });
+    else  alert("impossible d'ajouter un numero d article negatif");
   }
 }

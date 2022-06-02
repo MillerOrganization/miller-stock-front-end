@@ -1,4 +1,5 @@
 <div class="container mt-3 mb-3" *ngIf="userFormGroup">
+  {{userFormGroup.value | json}}
   <div class="card w-50">
     <div class="card-header">modifier utilisateur</div>
     <div class="card-body">
@@ -17,6 +18,10 @@
           <input  type="date" class="form-control" formControlName="dateNaissance">
           <label class="form-label">password:</label>
           <input  type="password" class="form-control" formControlName="password">
+        <select multiple formControlName="roles">
+          <option *ngFor="let role of roles" [value]="role._links.self.href">{{role.designation}}</option>
+        </select>
+        <br>
           <button class="btn btn-primary mt-2" (click)="onUpdateUser()">update</button>
       </form>
     </div>

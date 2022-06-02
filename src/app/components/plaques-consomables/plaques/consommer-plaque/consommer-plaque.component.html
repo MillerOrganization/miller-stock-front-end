@@ -1,16 +1,77 @@
 <p>consommer-plaque works!</p>
 
+{{consommerPlaqueFromGroup?.value|json}}
 <div class="card">
   <div class="card-header">
    Consommer une plaque
   </div>
   <div class="card-body">
-    <ng-container *ngIf="consommerPlaqueFromGroup">
-      <form [formGroup]="consommerPlaqueFromGroup">
-        <label class="form-label">quantite:</label>
-        <input  type="number" class="form-control" formControlName="quantite">
-        <button class="btn btn-success mt-2" (click)="consommer()">consommer</button>
-      </form>
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <span class="fw-bold">numéro d'article:</span>
+          {{plaque?.listPlaques?.numeroArticle}}
+        </li>
+        <li class="list-group-item">
+          <span class="fw-bold">designation:</span>
+          {{plaque?.listPlaques?.designation}}
+        </li>
+        <li class="list-group-item">
+          <span class="fw-bold">groupe article:</span>
+          {{plaque?.listPlaques?.groupeArticle?.designation}}
+        </li>
+        <li class="list-group-item">
+          <span class="fw-bold">Type:</span>
+          {{plaque?.type}}
+        </li>
+        <ng-template [ngIf]="plaque?.type=='chute'" [ngIfElse]="plaqueStandard">
+          <li class="list-group-item">
+            <span class="fw-bold">Longueur:</span>
+            {{plaque?.longueur}}
+          </li>
+          <li class="list-group-item">
+            <span class="fw-bold">Largeur:</span>
+            {{plaque?.largeur}}
+          </li>
+          <li class="list-group-item">
+            <span class="fw-bold">Surface:</span>
+            {{plaque?.surface}}
+          </li>
+        </ng-template>
+        <ng-template #plaqueStandard>
+          <li class="list-group-item">
+            <span class="fw-bold">Longueur:</span>
+            {{plaque?.longueur}}
+          </li>
+          <li class="list-group-item">
+            <span class="fw-bold">Largeur:</span>
+            {{plaque?.largeur}}
+          </li>
+          <li class="list-group-item">
+            <span class="fw-bold">Surface:</span>
+            {{plaque?.taille?.surface}}
+          </li>
+        </ng-template>
+        <li class="list-group-item">
+          <span class="fw-bold">Quantite:</span>
+          {{plaque?.quantite}}
+        </li>
+        <li class="list-group-item">
+          <button class="btn btn-success" [ngClass]="plaque.quantite==0?'disabled':''" (click)="utiliser()">utiliser</button>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <ng-container *ngIf="consommerPlaqueFromGroup && isReady">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="consommerPlaqueFromGroup">
+            <label class="form-label">quantite:</label>
+            <input  type="number" class="form-control" formControlName="quantite">
+            <button class="btn btn-primary mt-2" (click)="consommer()">consommer</button>
+          </form>
+        </div>
+      </div>
     </ng-container>
   </div>
 </div>

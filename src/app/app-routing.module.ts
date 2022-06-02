@@ -19,6 +19,13 @@ import {
 import {
   ConsommerPlaqueComponent
 } from "./components/plaques-consomables/plaques/consommer-plaque/consommer-plaque.component";
+import {ConsomablesComponent} from "./components/plaques-consomables/consomables/consomables.component";
+import {
+  ListConsomablesComponent
+} from "./components/plaques-consomables/consomables/list-consomables/list-consomables.component";
+import {
+  UseConsomableComponent
+} from "./components/plaques-consomables/consomables/use-consomable/use-consomable.component";
 
 
 const routes: Routes = [
@@ -31,7 +38,10 @@ const routes: Routes = [
   {path:"new-plaque",component:NewPlaqueComponent},
   {path:"list-plaques",component:ListPlaquesComponent},
   {path:"edit-list-plaque/:url",component:EditListPlaqueComponent},
-  {path:"consommer-plaque/:idPlaque/:idUser",component:ConsommerPlaqueComponent}
+  {path:"consommer-plaque/:idPlaque/:idUser",component:ConsommerPlaqueComponent},
+  {path:"consomables",component:ConsomablesComponent},
+  {path:"list-consomable",component:ListConsomablesComponent},
+  {path:"use-consomable/:url",component:UseConsomableComponent}
 ];
 
 @NgModule({

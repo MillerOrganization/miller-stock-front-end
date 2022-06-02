@@ -20,6 +20,14 @@ import { EditListPlaqueComponent } from './components/plaques-consomables/plaque
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { AddListPlaqueComponent } from './components/plaques-consomables/plaques/list-plaques/add-list-plaque/add-list-plaque.component';
 import { ConsommerPlaqueComponent } from './components/plaques-consomables/plaques/consommer-plaque/consommer-plaque.component';
+import { ConsomablesComponent } from './components/plaques-consomables/consomables/consomables.component';
+import { NavConsomableComponent } from './components/plaques-consomables/consomables/nav-consomable/nav-consomable.component';
+import { ListConsomablesComponent } from './components/plaques-consomables/consomables/list-consomables/list-consomables.component';
+import { AddListConsomableComponent } from './components/plaques-consomables/consomables/list-consomables/add-list-consomable/add-list-consomable.component';
+import { EditListConsomableComponent } from './components/plaques-consomables/consomables/list-consomables/edit-list-consomable/edit-list-consomable.component';
+import { AddConsomableComponent } from './components/plaques-consomables/consomables/add-consomable/add-consomable.component';
+import { EditConsomableComponent } from './components/plaques-consomables/consomables/edit-consomable/edit-consomable.component';
+import { UseConsomableComponent } from './components/plaques-consomables/consomables/use-consomable/use-consomable.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +45,15 @@ import { ConsommerPlaqueComponent } from './components/plaques-consomables/plaqu
     ListPlaquesComponent,
     EditListPlaqueComponent,
     AddListPlaqueComponent,
-    ConsommerPlaqueComponent
+    ConsommerPlaqueComponent,
+    ConsomablesComponent,
+    NavConsomableComponent,
+    ListConsomablesComponent,
+    AddListConsomableComponent,
+    EditListConsomableComponent,
+    AddConsomableComponent,
+    EditConsomableComponent,
+    UseConsomableComponent
   ],
   imports: [
     BrowserModule,

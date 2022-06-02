@@ -1,0 +1,17 @@
+<p>add-list-consomable works!</p>
+{{consomableFormGroup?.value|json}}
+<div class="container mt-3 mb-3" *ngIf="consomableFormGroup">
+  <form [formGroup]="consomableFormGroup">
+    <label class="form-label">numeroArticle:</label>
+    <input  type="number" class="form-control" formControlName="numeroArticle">
+    <label class="form-label">designation:</label>
+    <input  type="text" class="form-control" formControlName="designation">
+    <label class="form-label">groupe d'article:</label>
+    <select type="number" class="form-control" name="listPlaques" formControlName="categorie" >
+      <option *ngFor="let cat of categories" [value]="cat._links.self.href">
+        {{cat.designation}}
+      </option>
+    </select>
+    <button class="btn btn-primary mt-2" (click)="onAddPlaque()">save</button>
+  </form>
+</div>

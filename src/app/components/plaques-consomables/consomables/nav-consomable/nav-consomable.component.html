@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="nav nav-pills">
+    <li><button class="btn btn-outline-info m-lg-2" (click)="onNewConsomable()">ajouter un consommable</button></li>
+    <li><button class="btn btn-outline-info m-lg-2" (click)="onListConsomable()">liste des consommables</button></li>
+  </ul>
+  <ul class="navbar navbar-nav ms-lg-auto">
+    <li>
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline">
+        <input ngModel name="keyword" placeholder="keyword" type="text"/>
+        <button class="btn btn-sm btn-outline-success m-lg-2"><span class="fa fa-search"></span></button>
+      </form>
+    </li>
+  </ul>
+</nav>

@@ -50,4 +50,5 @@ export class PlaquesComponent implements OnInit {
     this.router.navigateByUrl("consommer-plaque/"+plaque.id+"/"+1);
     //this.router.navigate(['consommer-plaque',plaque.id,stringify(1)]);
   }
+
 }

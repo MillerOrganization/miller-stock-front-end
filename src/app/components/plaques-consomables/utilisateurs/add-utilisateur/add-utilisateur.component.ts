@@ -12,6 +12,7 @@ import {environment} from "../../../../../environments/environment";
 export class AddUtilisateurComponent implements OnInit {
 
   userFormGroup?:FormGroup;
+  roles: any;
   constructor(private activatedRoute:ActivatedRoute,
               private plaquesConsomablesService:PlaquesConsommablesService,
               private fb:FormBuilder,
@@ -25,7 +26,11 @@ export class AddUtilisateurComponent implements OnInit {
       mail:['',Validators.required],
       password:['',Validators.required],
       phone:['',Validators.required],
-      dateNaissance:['',Validators.required]
+      dateNaissance:['',Validators.required],
+      roles:[[],Validators.required]
+    });
+    this.plaquesConsomablesService.getResources(environment.host+"/roles").subscribe(data=>{
+      this.roles=data._embedded.roles;
     });
   }
 

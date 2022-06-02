@@ -1,0 +1,42 @@
+<p>use-consomable works!</p>
+<div class="container">
+  <div class="card">
+    <div class="card-header">consommer un consommable</div>
+    <div class="card-body">
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span class="fw-bold">numéro d'article:</span>{{consomable?.listConsomable?.numeroArticle}}
+          </li>
+          <li class="list-group-item">
+            <span class="fw-bold">designation:</span>{{consomable?.listConsomable?.designation}}
+          </li>
+          <li class="list-group-item">
+            <span class="fw-bold">groupe d'article:</span>
+            {{consomable?.listConsomable?.categorie?.designation}}
+          </li>
+          <li class="list-group-item">
+            <span class="fw-bold">quantite:</span>
+            {{consomable?.quantite}}
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-success" [ngClass]="consomable?.quantite==0?'disabled':''" (click)="consomableReady()">consommer</button>
+          </li>
+        </ul>
+      </div>
+      <br>
+      <ng-container *ngIf="isReady && useConsomableFormGroup">
+        <div class="card">
+          <div class="card-body">
+            {{useConsomableFormGroup.value|json}}
+            <form [formGroup]="useConsomableFormGroup">
+              <label class="form-label">quantite</label>
+              <input type="number" class="form-control" formControlName="quantite"><br>
+                <button class="btn btn-primary" (click)="onUseConsomable()">save</button>
+            </form>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

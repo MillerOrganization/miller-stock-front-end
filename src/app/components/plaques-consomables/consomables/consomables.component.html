@@ -1,0 +1,53 @@
+<ng-template #mymodalAdd let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">ajouter une plaque</h4>
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span class="fa fa-close"></span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-add-consomable (newItemEvent)="onClose($event,modal)"></app-add-consomable>
+  </div>
+</ng-template>
+
+<ng-template #mymodalUpdate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" >modifier un consommable</h4>
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span class="fa fa-close"></span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-edit-consomable [consomable]="consomableToUpdate" (newItemEvent)="onClose($event,modal)"></app-edit-consomable>
+    <!--<app-edit-list-consomable [consomable]="consomable" (newItemEvent)="onClose($event,modal)"></app-edit-list-consomable>-->
+  </div>
+</ng-template>
+
+
+<app-nav-consomable (newItemEvent)="intercept($event,mymodalAdd)"
+   ></app-nav-consomable>
+
+<div class="p-4">
+  <ng-container>
+    <table class="table">
+      <tr>
+        <th>numero article</th><th>designation</th><th>groupe d'article</th><th>quantite</th>
+      </tr>
+      <tr *ngFor="let consomable of consomables?._embedded.consomables">
+        <td>{{consomable?.listConsomable?.['numeroArticle']}}</td>
+        <td>{{consomable?.listConsomable?.['designation']}}</td>
+        <td>{{consomable?.listConsomable?.categorie?.designation}}</td>
+        <td>{{consomable?.quantite}}</td>
+        <td>
+          <button class="btn btn-outline-danger" (click)="onDeleteConsomable(consomable)"><span class="fa fa-trash"></span></button>
+        </td>
+        <td>
+          <button class="btn btn-outline-warning m-lg-2" (click)="openUpdate(mymodalUpdate,consomable)"><span class="fa fa-edit"></span></button>
+        </td>
+        <td>
+          <button class="btn btn-outline-success" [ngClass]="consomable.quantite==0?'disabled':''" (click)="onUseConsomable(consomable)">consommer</button>
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+</div>
