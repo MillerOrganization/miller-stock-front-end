@@ -31,6 +31,13 @@ import { UseConsomableComponent } from './components/plaques-consomables/consoma
 import { AuthenticateComponent } from './components/plaques-consomables/authenticate/authenticate.component';
 import { VentesComponent } from './components/plaques-consomables/ventes/ventes.component';
 import { SidebarVenteComponent } from './components/plaques-consomables/ventes/sidebar-vente/sidebar-vente.component';
+import { AddCommandeComponent } from './components/plaques-consomables/ventes/add-commande/add-commande.component';
+import { CommandesComponent } from './components/plaques-consomables/ventes/commandes/commandes.component';
+import { ToutesCommandesComponent } from './components/plaques-consomables/ventes/toutes-commandes/toutes-commandes.component';
+import { SidebarUserComponent } from './components/plaques-consomables/sidebar-user/sidebar-user.component';
+import { ProfileComponent } from './components/plaques-consomables/profile/profile.component';
+import { PlaquesUsedComponent } from './components/plaques-consomables/plaques-used/plaques-used.component';
+import { ConsomablesUsedComponent } from './components/plaques-consomables/consomables-used/consomables-used.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +66,14 @@ import { SidebarVenteComponent } from './components/plaques-consomables/ventes/s
     UseConsomableComponent,
     AuthenticateComponent,
     VentesComponent,
-    SidebarVenteComponent
+    SidebarVenteComponent,
+    AddCommandeComponent,
+    CommandesComponent,
+    ToutesCommandesComponent,
+    SidebarUserComponent,
+    ProfileComponent,
+    PlaquesUsedComponent,
+    ConsomablesUsedComponent
   ],
   imports: [
     BrowserModule,

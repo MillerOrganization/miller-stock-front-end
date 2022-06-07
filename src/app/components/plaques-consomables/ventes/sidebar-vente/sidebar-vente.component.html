@@ -1,5 +1,8 @@
-<ul class="list-group list-group-item-dark">
-  <li class="list-group-item"><a>ajouter commande</a></li>
-  <li class="list-group-item"><a>commandes</a></li>
-  <li class="list-group-item"><a>toutes les commandes</a></li>
+<ul class="list-group">
+  <li class="list-group-item clickable"
+      [ngClass]="clickedItem=='commandes'?'active':''" (click)="commandes()"><a>commandes</a></li>
+  <li class="list-group-item clickable"
+      [ngClass]="clickedItem=='add-commande'?'active':''" (click)="addCommande()"><a>ajouter commande</a></li>
+  <li class="list-group-item clickable"
+      [ngClass]="clickedItem=='toutes-commandes'?'active':''" (click)="toutesComandes()"><a>toutes les commandes</a></li>
 </ul>

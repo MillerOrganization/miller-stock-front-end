@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ventes.component.css']
 })
 export class VentesComponent implements OnInit {
+  clickedItem: string="commandes";
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  change(event: any) {
+    this.clickedItem=event;
+  }
 }

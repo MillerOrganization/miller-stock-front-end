@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./plaques-consomables.component.css']
 })
 export class PlaquesConsomablesComponent implements OnInit {
+  clikedItem: string='profile';
   constructor(public authService:AuthUserService,
               private router:Router) { }
 
@@ -17,4 +18,7 @@ export class PlaquesConsomablesComponent implements OnInit {
 
   }
 
+  change(event: any) {
+    this.clikedItem=event;
+  }
 }

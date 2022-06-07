@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <li class="list-group-item clickable"
+      [ngClass]="clickedItem=='profile'?'active':''" (click)="profile()"><a>profile</a></li>
+  <li class="list-group-item clickable"
+      [ngClass]="clickedItem=='plaques-used'?'active':''" (click)="plaquesUsed()"><a>plaques consommées</a></li>
+  <li class="list-group-item clickable"
+      [ngClass]="clickedItem=='consommables-used'?'active':''" (click)="consomablesUsed()"><a>consommables consommés</a></li>
+</ul>
