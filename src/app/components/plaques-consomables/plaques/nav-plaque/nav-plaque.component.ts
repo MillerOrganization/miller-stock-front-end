@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthUserService} from "../../../../../services/auth-user.service";
 
 @Component({
   selector: 'app-nav-plaque',
@@ -8,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class NavPlaqueComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,public authService:AuthUserService) { }
   @Output() newItemEvent=new EventEmitter();
   ngOnInit(): void {
   }

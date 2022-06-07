@@ -3,6 +3,7 @@ import {PlaquesConsommablesService} from "../../../../services/plaques-consommab
 import {environment} from "../../../../environments/environment";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Router} from "@angular/router";
+import {AuthUserService} from "../../../../services/auth-user.service";
 
 @Component({
   selector: 'app-consomables',
@@ -16,10 +17,13 @@ export class ConsomablesComponent implements OnInit {
   consomableToUpdate: any;
   constructor(private pcService:PlaquesConsommablesService,
               private modalService:NgbModal,
-              private router:Router) { }
+              private router:Router,
+              public authService:AuthUserService) { }
 
   ngOnInit(): void {
+    if(this.authService.isAuthenticated())
     this.getConsomables();
+    else this.router.navigateByUrl('authenticate');
   }
 
   open(content:any) {

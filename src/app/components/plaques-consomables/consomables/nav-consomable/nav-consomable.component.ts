@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthUserService} from "../../../../../services/auth-user.service";
 
 @Component({
   selector: 'app-nav-consomable',
@@ -9,7 +10,7 @@ import {Router} from "@angular/router";
 export class NavConsomableComponent implements OnInit {
 
   @Output() newItemEvent=new EventEmitter();
-  constructor(private router:Router) { }
+  constructor(private router:Router,public authService:AuthUserService) { }
 
   ngOnInit(): void {
   }

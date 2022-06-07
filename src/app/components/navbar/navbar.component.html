@@ -7,18 +7,24 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" routerLink="">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="plaques">plaques</a>
+          <a class="nav-link" routerLink="plaques"
+             *ngIf="authService.isAuthenticated() && authService.roleMatches('operateur production')">plaques</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="consomables">consommables</a>
+          <a class="nav-link" routerLink="consomables"
+             *ngIf="authService.isAuthenticated() && authService.roleMatches('operateur production')">consommables</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="utilisateurs">utilisateurs</a>
+          <a class="nav-link" routerLink="ventes"
+             *ngIf="authService.isAuthenticated() && authService.roleMatches('commercial')">ventes</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="authService.isAuthenticated() && authService.roleMatches('admin')" routerLink="utilisateurs">utilisateurs</a>
+        </li>
+        <!--<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
           </a>
@@ -31,12 +37,18 @@
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+        </li>-->
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div class="d-flex">
+        <!--<form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>-->
+        <li class="nav-item">
+          <button class="btn btn-outline-success" *ngIf="!authService.isAuthenticated()" routerLink="authenticate">se connecter</button>
+          <button class="btn btn-outline-danger" *ngIf="authService.isAuthenticated()" (click)="logout()">se déconnecter</button>
+        </li>
+      </div>
     </div>
   </div>
 </nav>

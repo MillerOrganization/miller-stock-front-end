@@ -37,7 +37,6 @@ export class EditUtilisateurComponent implements OnInit {
         prenom: [data?.prenom, Validators.required],
         username:[data?.username,Validators.required],
         mail:[data?.mail,Validators.required],
-        password:[data?.password,Validators.required],
         phone:[data?.phone,Validators.required],
         dateNaissance:[data?.dateNaissance,Validators.required],
         roles:[this.rolesUser,Validators.required]

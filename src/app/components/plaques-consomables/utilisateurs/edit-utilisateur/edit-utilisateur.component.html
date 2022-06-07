@@ -16,8 +16,8 @@
           <input  type="tel" class="form-control" formControlName="phone">
           <label class="form-label">date de naissance:</label>
           <input  type="date" class="form-control" formControlName="dateNaissance">
-          <label class="form-label">password:</label>
-          <input  type="password" class="form-control" formControlName="password">
+          <!--<label class="form-label">password:</label>
+          <input  type="password" class="form-control" formControlName="password">-->
         <select multiple formControlName="roles">
           <option *ngFor="let role of roles" [value]="role._links.self.href">{{role.designation}}</option>
         </select>

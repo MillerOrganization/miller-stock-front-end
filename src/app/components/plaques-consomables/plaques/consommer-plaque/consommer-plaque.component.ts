@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PlaquesConsommablesService} from "../../../../../services/plaques-consommables.service";
 import {environment} from "../../../../../environments/environment";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthUserService} from "../../../../../services/auth-user.service";
 
 @Component({
   selector: 'app-consommer-plaque',
@@ -20,13 +21,28 @@ export class ConsommerPlaqueComponent implements OnInit {
   constructor(private activatedRoute:ActivatedRoute,
               private pcService:PlaquesConsommablesService,
               private fb:FormBuilder,
-              private router:Router) { }
+              private router:Router,
+              private authService:AuthUserService) { }
 
   ngOnInit(): void {
-    this.idUser=parseInt(this.activatedRoute.snapshot.params?.['idUser']);
     this.idPlaque=parseInt(this.activatedRoute.snapshot.params?.['idPlaque']);
-    this.onGetPlaque()
+    this.onGetPlaque();
 
+  }
+
+  onGetUser(){
+    this.pcService.getResources(environment.host+"/utilisateurs/search/byUsername?username="+
+    this.authService.getUsernameFromToken())
+      .subscribe(data=>{
+      this.user=data;
+      console.log(this.user);
+        this.consommerPlaqueFromGroup=this.fb.group({
+          plaque:[environment.host+"/plaques/"+this.idPlaque],
+          utilisateur:[this.user?._links.self.href],
+          quantite:[1,Validators.required]
+        });
+        console.log(this.consommerPlaqueFromGroup.value);
+    })
   }
 
   onGetPlaque(){
@@ -34,11 +50,7 @@ export class ConsommerPlaqueComponent implements OnInit {
     data=>{
       this.plaque=data;
       console.log(this.plaque);
-        this.consommerPlaqueFromGroup=this.fb.group({
-          plaque:[environment.host+"/plaques/"+this.idPlaque],
-          utilisateur:[environment.host+"/utilisateurs/"+this.idUser],
-          quantite:[1,Validators.required]
-        });
+      this.onGetUser();
       }
     );
   }

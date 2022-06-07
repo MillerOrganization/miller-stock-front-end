@@ -2,7 +2,7 @@
   <ul class="nav nav-pills">
     <li><button class="btn btn-outline-info m-lg-2" (click)="onNewPlaque()">nouvelle Plaque</button></li>
     <li><button class="btn btn-outline-info m-lg-2" (click)="onNewChute()">nouvelle chute</button></li>
-    <li><button class="btn btn-outline-info m-lg-2" (click)="onListPlaques()">liste des plaques</button></li>
+    <li><button class="btn btn-outline-info m-lg-2" *ngIf="authService.roleMatches('admin')" (click)="onListPlaques()">liste des plaques</button></li>
   </ul>
   <ul class="navbar navbar-nav ms-lg-auto">
     <li>

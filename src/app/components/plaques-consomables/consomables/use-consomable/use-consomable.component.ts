@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {PlaquesConsommablesService} from "../../../../../services/plaques-consommables.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {environment} from "../../../../../environments/environment";
+import {AuthUserService} from "../../../../../services/auth-user.service";
 
 @Component({
   selector: 'app-use-consomable',
@@ -14,9 +15,11 @@ export class UseConsomableComponent implements OnInit {
   consomable: any;
   isReady:boolean=false;
   useConsomableFormGroup:any;
+  private user: any;
   constructor(private activatedRoute:ActivatedRoute,
               private pcService:PlaquesConsommablesService,
-              private fb:FormBuilder) { }
+              private fb:FormBuilder,
+              private authService:AuthUserService) { }
 
   ngOnInit(): void {
     this.urlConsomable=atob(this.activatedRoute.snapshot.params?.['url']);
@@ -24,15 +27,31 @@ export class UseConsomableComponent implements OnInit {
 
   }
 
+  onGetUser(){
+    this.pcService.getResources(environment.host+"/utilisateurs/search/byUsername?username="+
+      this.authService.getUsernameFromToken())
+      .subscribe(data=>{
+        this.user=data;
+        console.log(this.user);
+        this.useConsomableFormGroup=this.fb.group({
+          consomable:this.consomable._links.self.href,
+          utilisateur:[this.user?._links.self.href],
+          quantite:[1,Validators.required]
+        });
+        console.log(this.useConsomableFormGroup.value);
+      })
+  }
+
   onGetConsomable(){
     this.pcService.getResources(this.urlConsomable).subscribe(data=>{
       this.consomable=data;
       this.getListConsomableForConsomable(this.consomable);
-      this.useConsomableFormGroup=this.fb.group({
+      this.onGetUser();
+      /*this.useConsomableFormGroup=this.fb.group({
         utilisateur:environment.host+"/utilisateurs/1",
         consomable:this.consomable._links.self.href,
         quantite:[1,Validators.required]
-      })
+      })*/
     });
   }
 

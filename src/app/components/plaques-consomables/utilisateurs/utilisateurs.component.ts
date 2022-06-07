@@ -3,6 +3,7 @@ import {PlaquesConsommablesService} from "../../../../services/plaques-consommab
 import {Router} from "@angular/router";
 import {environment} from "../../../../environments/environment";
 import {NgForm} from "@angular/forms";
+import {AuthUserService} from "../../../../services/auth-user.service";
 
 @Component({
   selector: 'app-utilisateurs',
@@ -12,10 +13,13 @@ import {NgForm} from "@angular/forms";
 export class UtilisateursComponent implements OnInit {
   public utilisateurs:any;
   constructor(private plaquesConsommablesService:PlaquesConsommablesService,
-              private router:Router) { }
+              private router:Router,
+              public authUserService:AuthUserService) { }
 
   ngOnInit(): void {
-    this.onGetAllUtilisateurs();
+    if(this.authUserService.isAuthenticated())
+        this.onGetAllUtilisateurs();
+    else this.router.navigateByUrl('authenticate');
   }
 
   onGetAllUtilisateurs(){

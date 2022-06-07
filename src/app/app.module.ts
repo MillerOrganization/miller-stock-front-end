@@ -28,6 +28,9 @@ import { EditListConsomableComponent } from './components/plaques-consomables/co
 import { AddConsomableComponent } from './components/plaques-consomables/consomables/add-consomable/add-consomable.component';
 import { EditConsomableComponent } from './components/plaques-consomables/consomables/edit-consomable/edit-consomable.component';
 import { UseConsomableComponent } from './components/plaques-consomables/consomables/use-consomable/use-consomable.component';
+import { AuthenticateComponent } from './components/plaques-consomables/authenticate/authenticate.component';
+import { VentesComponent } from './components/plaques-consomables/ventes/ventes.component';
+import { SidebarVenteComponent } from './components/plaques-consomables/ventes/sidebar-vente/sidebar-vente.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { UseConsomableComponent } from './components/plaques-consomables/consoma
     EditListConsomableComponent,
     AddConsomableComponent,
     EditConsomableComponent,
-    UseConsomableComponent
+    UseConsomableComponent,
+    AuthenticateComponent,
+    VentesComponent,
+    SidebarVenteComponent
   ],
   imports: [
     BrowserModule,

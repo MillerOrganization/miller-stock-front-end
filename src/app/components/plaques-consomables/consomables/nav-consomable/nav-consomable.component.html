@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <ul class="nav nav-pills">
     <li><button class="btn btn-outline-info m-lg-2" (click)="onNewConsomable()">ajouter un consommable</button></li>
-    <li><button class="btn btn-outline-info m-lg-2" (click)="onListConsomable()">liste des consommables</button></li>
+    <li><button class="btn btn-outline-info m-lg-2" *ngIf="authService.roleMatches('admin')" (click)="onListConsomable()">liste des consommables</button></li>
   </ul>
   <ul class="navbar navbar-nav ms-lg-auto">
     <li>

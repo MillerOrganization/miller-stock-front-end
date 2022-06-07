@@ -38,12 +38,14 @@
         <td>{{consomable?.listConsomable?.['designation']}}</td>
         <td>{{consomable?.listConsomable?.categorie?.designation}}</td>
         <td>{{consomable?.quantite}}</td>
-        <td>
-          <button class="btn btn-outline-danger" (click)="onDeleteConsomable(consomable)"><span class="fa fa-trash"></span></button>
-        </td>
-        <td>
-          <button class="btn btn-outline-warning m-lg-2" (click)="openUpdate(mymodalUpdate,consomable)"><span class="fa fa-edit"></span></button>
-        </td>
+        <ng-container *ngIf="authService.roleMatches('responsable production')">
+          <td>
+            <button class="btn btn-outline-danger" (click)="onDeleteConsomable(consomable)"><span class="fa fa-trash"></span></button>
+          </td>
+          <td>
+            <button class="btn btn-outline-warning m-lg-2" (click)="openUpdate(mymodalUpdate,consomable)"><span class="fa fa-edit"></span></button>
+          </td>
+          </ng-container>
         <td>
           <button class="btn btn-outline-success" [ngClass]="consomable.quantite==0?'disabled':''" (click)="onUseConsomable(consomable)">consommer</button>
         </td>

@@ -26,6 +26,9 @@ import {
 import {
   UseConsomableComponent
 } from "./components/plaques-consomables/consomables/use-consomable/use-consomable.component";
+import {AuthenticateComponent} from "./components/plaques-consomables/authenticate/authenticate.component";
+import {PlaquesConsomablesComponent} from "./components/plaques-consomables/plaques-consomables.component";
+import {VentesComponent} from "./components/plaques-consomables/ventes/ventes.component";
 
 
 const routes: Routes = [
@@ -41,7 +44,10 @@ const routes: Routes = [
   {path:"consommer-plaque/:idPlaque/:idUser",component:ConsommerPlaqueComponent},
   {path:"consomables",component:ConsomablesComponent},
   {path:"list-consomable",component:ListConsomablesComponent},
-  {path:"use-consomable/:url",component:UseConsomableComponent}
+  {path:"use-consomable/:url",component:UseConsomableComponent},
+  {path:"authenticate",component:AuthenticateComponent},
+  {path:"",component:PlaquesConsomablesComponent},
+  {path:"ventes",component:VentesComponent}
 ];
 
 @NgModule({

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthUserService} from "../../../services/auth-user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-plaques-consomables',
@@ -6,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plaques-consomables.component.css']
 })
 export class PlaquesConsomablesComponent implements OnInit {
-  constructor() { }
+  constructor(public authService:AuthUserService,
+              private router:Router) { }
 
   ngOnInit(): void {
+    if(!this.authService.isAuthenticated())
+      this.router.navigateByUrl('authenticate');
 
   }
 

@@ -1,0 +1,20 @@
+<div class="container mt-3">
+  <div class="card">
+    <div class="card-header">s'authentifier</div>
+    <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="login(f)">
+          <div class="mb-3">
+            <label class="form-label">username:</label>
+            <input ngModel name="username" class="form-control" type="text" placeholder="username">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">password:</label>
+            <input ngModel name="password" class="form-control" type="password" placeholder="password">
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-primary mt-2">s'authentifier</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>

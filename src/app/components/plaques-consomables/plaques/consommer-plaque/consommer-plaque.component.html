@@ -1,6 +1,6 @@
 <p>consommer-plaque works!</p>
 
-{{consommerPlaqueFromGroup?.value|json}}
+
 <div class="card">
   <div class="card-header">
    Consommer une plaque
@@ -41,11 +41,11 @@
         <ng-template #plaqueStandard>
           <li class="list-group-item">
             <span class="fw-bold">Longueur:</span>
-            {{plaque?.longueur}}
+            {{plaque?.taille.longueur}}
           </li>
           <li class="list-group-item">
             <span class="fw-bold">Largeur:</span>
-            {{plaque?.largeur}}
+            {{plaque?.taille.largeur}}
           </li>
           <li class="list-group-item">
             <span class="fw-bold">Surface:</span>
@@ -57,7 +57,7 @@
           {{plaque?.quantite}}
         </li>
         <li class="list-group-item">
-          <button class="btn btn-success" [ngClass]="plaque.quantite==0?'disabled':''" (click)="utiliser()">utiliser</button>
+          <button class="btn btn-success" [ngClass]="plaque?.quantite==0?'disabled':''" (click)="utiliser()">utiliser</button>
         </li>
       </ul>
     </div>

@@ -3,6 +3,7 @@ import {PlaquesConsommablesService} from "../../../../services/plaques-consommab
 import {environment} from "../../../../environments/environment";
 import {Router} from "@angular/router";
 import {stringify} from "@angular/compiler/src/util";
+import {AuthUserService} from "../../../../services/auth-user.service";
 
 @Component({
   selector: 'app-plaques',
@@ -13,10 +14,13 @@ export class PlaquesComponent implements OnInit {
 
   plaques:any;
   constructor(private plaquesConsommablesService:PlaquesConsommablesService,
-              private router:Router) { }
+              private router:Router,
+              public authService:AuthUserService) { }
 
   ngOnInit(): void {
-    this.onGetAllPlaques();
+    if(this.authService.isAuthenticated())
+      this.onGetAllPlaques();
+    else this.router.navigateByUrl('authenticate');
   }
 
   onGetAllPlaques(){
