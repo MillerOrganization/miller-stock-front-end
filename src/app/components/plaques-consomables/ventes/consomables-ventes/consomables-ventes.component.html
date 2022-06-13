@@ -1,0 +1,31 @@
+<div class="container" >
+  <div class="row">
+    <div class="col-md-12 col-lg-4 mt-2" *ngFor="let consomable of consomables?._embedded?.consomables">
+      <div class="card">
+        <div class="card-header">{{consomable?.listConsomable?.designation}}</div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li class="list-group-item"><span class="fw-bold">Numero Article:</span>
+              {{consomable?.listConsomable?.numeroArticle}}</li>
+            <li class="list-group-item"><span class="fw-bold">Groupe Article:</span>
+              {{consomable?.listConsomable?.categorie?.designation}}
+            </li>
+            <li class="list-group-item"><span class="fw-bold">Categorie:</span>
+              {{consomable?.quantite}}
+            </li>
+          </ul>
+          <form #f="ngForm" class="mt-2" (ngSubmit)="addToCart(consomable,f.value)">
+            <select ngModel name="quantite" class="form-control">
+              <option value="" disabled selected>choisir une quantité</option>
+              <option *ngFor="let q of quantities;let i=index" [value]="i+1">
+                {{i+1}}
+              </option>
+            </select>
+            <button *ngIf="caddyService.isThereCaddy()"
+                    class="btn btn-dark fa fa-cart-plus mt-2"></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

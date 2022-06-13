@@ -1,1 +1,17 @@
 <p>consomables-used works!</p>
+
+<table class="table table-striped">
+  <tr>
+    <th>numero d'article</th><th>designation</th><th>groupe article</th><th>quantite consommée</th><th>date</th>
+    <th>time</th>
+  </tr>
+
+  <tr *ngFor="let uc of utilisateurConsomables?._embedded?.utilisateurConsomables">
+    <td>{{uc?.consomable?.listConsomable?.numeroArticle}}</td>
+    <td>{{uc?.consomable?.listConsomable?.designation}}</td>
+    <td>{{uc?.consomable?.listConsomable?.categorie?.designation}}</td>
+    <td>{{uc?.quantite}}</td>
+    <td>{{uc.date}}</td>
+    <td>{{uc.time}}</td>
+  </tr>
+</table>

@@ -1,1 +1,22 @@
-<p>commandes works!</p>
+<ng-template #mymodalAdd let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">ajouter une plaque</h4>
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span class="fa fa-close"></span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!--<app-add-consomable (newItemEvent)="onClose($event,modal)"></app-add-consomable>-->
+    <app-add-commande (newItemEvent)="onClose($event,modal)"></app-add-commande>
+  </div>
+</ng-template>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">commandes</div>
+    <div class="card-body">
+      <button class="btn btn-primary fa fa-plus" (click)="open(mymodalAdd)"></button>
+
+    </div>
+  </div>
+</div>

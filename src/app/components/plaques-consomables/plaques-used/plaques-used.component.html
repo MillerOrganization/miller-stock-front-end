@@ -1,1 +1,17 @@
 <p>plaques-used works!</p>
+
+<table class="table table-striped">
+  <tr>
+  <th>numero d'article</th><th>designation</th><th>groupe article</th><th>quantite consommée</th><th>date
+  </th><th>time</th>
+  </tr>
+
+  <tr *ngFor="let up of utilisateurPlaques?._embedded?.utilisateurPlaques">
+    <td>{{up?.plaque?.listPlaques?.numeroArticle}}</td>
+    <td>{{up?.plaque?.listPlaques?.designation}}</td>
+    <td>{{up?.plaque?.listPlaques?.groupeArticle?.designation}}</td>
+    <td>{{up?.quantite}}</td>
+    <td>{{up.date}}</td>
+    <td>{{up.time}}</td>
+  </tr>
+</table>

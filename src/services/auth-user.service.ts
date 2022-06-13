@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../environments/environment";
+import {PlaquesConsommablesService} from "./plaques-consommables.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthUserService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private pcService:PlaquesConsommablesService) { }
 
   login(resource:any):Observable<any>{
     return this.http.post(environment.host+"/login",resource,{
@@ -57,5 +58,16 @@ export class AuthUserService {
     let obj=this.getObject();
     // @ts-ignore
     return obj != null ? obj?.['roles'] : [];
+  }
+
+  getDuration():number{
+    let obj=this.getObject();
+    /*let date=new Date(0);
+    let date1=new Date(0);
+    console.log(date1);
+    // @ts-ignore
+    date.setUTCSeconds(parseInt(obj?.['exp']));*/
+    // @ts-ignore
+    return (parseInt(obj?.['exp'])-parseInt(obj?.['iat']))*1000;
   }
 }

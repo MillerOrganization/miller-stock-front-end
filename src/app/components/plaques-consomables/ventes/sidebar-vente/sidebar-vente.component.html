@@ -1,8 +1,12 @@
 <ul class="list-group">
   <li class="list-group-item clickable"
-      [ngClass]="clickedItem=='commandes'?'active':''" (click)="commandes()"><a>commandes</a></li>
+      [ngClass]="clickedItem=='commandes'?'active':''" (click)="emitEvent('commandes')"><a>commandes</a></li>
   <li class="list-group-item clickable"
-      [ngClass]="clickedItem=='add-commande'?'active':''" (click)="addCommande()"><a>ajouter commande</a></li>
+      [ngClass]="clickedItem=='consomables'?'active':''" (click)="emitEvent('consomables')"><a>consommables</a></li>
   <li class="list-group-item clickable"
-      [ngClass]="clickedItem=='toutes-commandes'?'active':''" (click)="toutesComandes()"><a>toutes les commandes</a></li>
+      [ngClass]="clickedItem=='panier'?'active':''" *ngIf="caddyService.isThereCaddy()"
+      (click)="emitEvent('panier')"><a>panier</a></li>
+  <li class="list-group-item clickable"
+      [ngClass]="clickedItem=='toutes-commandes'?'active':''" *ngIf="authService.roleMatches('admin')"
+      (click)="emitEvent('toutes-commandes')"><a>toutes les commandes</a></li>
 </ul>

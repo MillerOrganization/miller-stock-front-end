@@ -1,23 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3 col-sm-4">
     <app-sidebar-vente (newItemEvent)="change($event)"></app-sidebar-vente>
     </div>
-    <div class="col-9">
+    <div class="col-md-9 col-sm-8">
 
       <ng-container [ngSwitch]="clickedItem">
         <ng-template [ngSwitchCase]="'commandes'">
           <app-commandes></app-commandes>
         </ng-template>
-        <ng-template [ngSwitchCase]="'add-commande'">
-          <app-add-commande></app-add-commande>
+        <ng-template [ngSwitchCase]="'consomables'">
+          <app-consomables-ventes></app-consomables-ventes>
         </ng-template>
         <ng-template [ngSwitchCase]="'toutes-commandes'">
           <app-toutes-commandes></app-toutes-commandes>
         </ng-template>
+        <ng-template [ngSwitchCase]="'panier'">
+          <app-panier [commercial]="commercial"></app-panier>
+        </ng-template>
       </ng-container>
-      <app-commandes></app-commandes>
-
 
     </div>
   </div>

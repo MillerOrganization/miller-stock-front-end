@@ -1,1 +1,11 @@
-<p>add-commande works!</p>
+<div class="container mt-3 mb-3" *ngIf="commandeFormGroup">
+  <form [formGroup]="commandeFormGroup">
+    <label class="form-label">client:</label>
+    <select  class="form-control" formControlName="client">
+      <option *ngFor="let cl of clients?._embedded?.clients" [value]="cl._links.self.href">
+        {{cl.nom}}
+      </option>
+    </select>
+    <button class="btn btn-primary mt-2" (click)="addCommande()">ajouter</button>
+  </form>
+</div>

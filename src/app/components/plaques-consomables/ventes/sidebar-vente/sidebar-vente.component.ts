@@ -1,4 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {CaddyService} from "../../../../../services/caddy.service";
+import {AuthUserService} from "../../../../../services/auth-user.service";
 
 @Component({
   selector: 'app-sidebar-vente',
@@ -10,7 +12,8 @@ export class SidebarVenteComponent implements OnInit {
 
   @Output() newItemEvent=new EventEmitter();
 
-  constructor() { }
+  constructor(public caddyService:CaddyService,
+              public authService:AuthUserService) { }
 
   ngOnInit(): void {
   }
@@ -20,15 +23,4 @@ export class SidebarVenteComponent implements OnInit {
     this.newItemEvent.emit(event);
   }
 
-  commandes() {
-    this.emitEvent('commandes');
-  }
-
-  addCommande() {
-    this.emitEvent('add-commande');
-  }
-
-  toutesComandes() {
-    this.emitEvent('toutes-commandes');
-  }
 }

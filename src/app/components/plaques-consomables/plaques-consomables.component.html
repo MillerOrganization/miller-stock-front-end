@@ -1,19 +1,18 @@
-<h1>test</h1>
 <div class="container">
   <div class="row">
     <div class="col-md-3 col-sm-4">
       <app-sidebar-user (newItemEvent)="change($event)"></app-sidebar-user>
     </div>
-    <div class="col-md-9 col-sm-6">
+    <div class="col-md-9 col-sm-6 mt-2">
       <ng-container [ngSwitch]="clikedItem">
         <ng-template [ngSwitchCase]="'profile'">
-          <app-profile></app-profile>
+          <app-profile [user]="user" ></app-profile>
         </ng-template>
         <ng-template [ngSwitchCase]="'plaques-used'">
-          <app-plaques-used></app-plaques-used>
+          <app-plaques-used [user]="user"></app-plaques-used>
         </ng-template>
         <ng-template [ngSwitchCase]="'consommables-used'">
-          <app-consomables-used></app-consomables-used>
+          <app-consomables-used [user]="user"></app-consomables-used>
         </ng-template>
       </ng-container>
     </div>
