@@ -1,1 +1,21 @@
-<p>toutes-commandes works!</p>
+<div class="container">
+  <div class="card">
+    <div class="card-header">commandes</div>
+    <div class="card-body">
+      <table class="table">
+        <tr>
+          <th>numero</th><th>assurée par</th><th>client</th><th>date</th><th>temps</th><th>details</th><th>actions</th>
+        </tr>
+        <tr *ngFor="let commande of commandes?._embedded?.commandes">
+          <td>{{commande?.id}}</td>
+          <td>{{commande?.commercial?.nom}} {{commande?.commercial?.prenom}}</td>
+          <td>{{commande?.client?.nom}}</td>
+          <td>{{commande?.date}}</td>
+          <td>{{commande?.time}}</td>
+          <td><button class="btn btn-outline-primary" (click)="detail(commande)"><span class="fa fa-info"></span></button></td>
+          <td><button class="fa fa-trash btn btn-outline-danger"></button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

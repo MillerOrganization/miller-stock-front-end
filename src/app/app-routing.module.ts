@@ -29,6 +29,9 @@ import {
 import {AuthenticateComponent} from "./components/plaques-consomables/authenticate/authenticate.component";
 import {PlaquesConsomablesComponent} from "./components/plaques-consomables/plaques-consomables.component";
 import {VentesComponent} from "./components/plaques-consomables/ventes/ventes.component";
+import {
+  DetailCommandeComponent
+} from "./components/plaques-consomables/ventes/detail-commande/detail-commande.component";
 
 
 const routes: Routes = [
@@ -47,7 +50,8 @@ const routes: Routes = [
   {path:"use-consomable/:url",component:UseConsomableComponent},
   {path:"authenticate",component:AuthenticateComponent},
   {path:"",component:PlaquesConsomablesComponent},
-  {path:"ventes",component:VentesComponent}
+  {path:"ventes",component:VentesComponent},
+  {path:"detail-commande/:url",component:DetailCommandeComponent}
 ];
 
 @NgModule({

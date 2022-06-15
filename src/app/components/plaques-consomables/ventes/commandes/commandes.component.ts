@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {PlaquesConsommablesService} from "../../../../../services/plaques-consommables.service";
+import {environment} from "../../../../../environments/environment";
+import {AuthUserService} from "../../../../../services/auth-user.service";
 
 @Component({
   selector: 'app-commandes',
@@ -10,11 +13,33 @@ export class CommandesComponent implements OnInit {
 
   closeResult?: string;
   private myModalRef: any;
-  constructor(private modalService:NgbModal) { }
+  commandes:any;
+  constructor(private modalService:NgbModal,
+              private pcService:PlaquesConsommablesService,
+              private authService:AuthUserService) { }
 
 
 
   ngOnInit(): void {
+    this.onGetCommandes();
+  }
+
+  onGetCommandes(){
+    this.pcService.getResources(environment.host+"/commandes/search/byCommercial?username="+this.authService.getUsernameFromToken())
+      .subscribe(data=>{
+      this.commandes=data;
+      console.log(this.commandes);
+      this.getClientForCommandes(this.commandes);
+    });
+  }
+
+  getClientForCommandes(commandes:any){
+    commandes._embedded.commandes.forEach((commande:any)=>{
+      /*console.log(commande._links.client.href);*/
+      this.pcService.getResources(commande._links.client.href).subscribe(data=>{
+        commande.client=data;
+      });
+    });
   }
   open(content:any) {
     this.setModalRef(content);

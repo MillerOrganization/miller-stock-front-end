@@ -40,6 +40,7 @@ import { PlaquesUsedComponent } from './components/plaques-consomables/plaques-u
 import { ConsomablesUsedComponent } from './components/plaques-consomables/consomables-used/consomables-used.component';
 import { ConsomablesVentesComponent } from './components/plaques-consomables/ventes/consomables-ventes/consomables-ventes.component';
 import { PanierComponent } from './components/plaques-consomables/ventes/panier/panier.component';
+import { DetailCommandeComponent } from './components/plaques-consomables/ventes/detail-commande/detail-commande.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { PanierComponent } from './components/plaques-consomables/ventes/panier/
     PlaquesUsedComponent,
     ConsomablesUsedComponent,
     ConsomablesVentesComponent,
-    PanierComponent
+    PanierComponent,
+    DetailCommandeComponent
   ],
   imports: [
     BrowserModule,

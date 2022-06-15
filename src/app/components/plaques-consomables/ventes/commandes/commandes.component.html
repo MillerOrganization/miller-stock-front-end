@@ -16,7 +16,18 @@
     <div class="card-header">commandes</div>
     <div class="card-body">
       <button class="btn btn-primary fa fa-plus" (click)="open(mymodalAdd)"></button>
-
+        <table class="table">
+          <tr>
+            <th>numero</th><th>client</th><th>date</th><th>temps</th><th>details</th>
+          </tr>
+          <tr *ngFor="let commande of commandes?._embedded?.commandes">
+            <td>{{commande?.id}}</td>
+            <td>{{commande?.client?.nom}}</td>
+            <td>{{commande?.date}}</td>
+            <td>{{commande?.time}}</td>
+            <td><button class="btn btn-outline-primary"><span class="fa fa-info"></span></button></td>
+          </tr>
+        </table>
     </div>
   </div>
 </div>

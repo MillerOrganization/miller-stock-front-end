@@ -28,8 +28,10 @@ export class AuthenticateComponent implements OnInit {
       console.log(this.authService.getDuration());
       setTimeout(()=>{
         localStorage.removeItem('token');
-        localStorage.removeItem('caddy');
-        this.router.navigateByUrl('authenticate');
+        this.router.navigateByUrl('authenticate').then(()=> {
+            window.location.reload();
+          }
+        );
       },this.authService.getDuration());
     },error => {
       console.log(error)
