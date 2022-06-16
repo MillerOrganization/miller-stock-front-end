@@ -1,11 +1,12 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="col-md-4 col-sm-12">
-      <div class="card">
+      <div class="card mb-3">
         <div class="card-header"><span class="fw-bold">commande numero: </span>{{commande?.id}}</div>
         <div class="card-body">
           <ul class="list-group">
             <li class="list-group-item">
+
               <span class="fw-bold">client: </span>{{commande?.client?.nom}}
             </li>
             <li class="list-group-item">
@@ -22,17 +23,25 @@
       </div>
     </div>
     <div class="col-md-6 col-sm-12">
-      <table class="table">
-        <tr>
-          <th>numero</th><th>groupe</th><th>designation</th><th>qte</th>
-        </tr>
-        <tr *ngFor="let lc of commande?.ligneCommandes?._embedded?.ligneCommandes">
-          <td>{{lc?.consomable?.listConsomable?.numeroArticle}}</td>
-          <td>{{lc?.consomable?.listConsomable?.categorie?.designation}}</td>
-          <td>{{lc?.consomable?.listConsomable?.designation}}</td>
-          <td>{{lc?.quantite}}</td>
-        </tr>
-      </table>
+      <div class="card">
+        <div class="card-header">lignes commandes</div>
+        <div class="card-body">
+          <table class="table">
+            <tr>
+              <th>numero</th>
+              <th>groupe</th>
+              <th>designation</th>
+              <th>qte</th>
+            </tr>
+            <tr *ngFor="let lc of commande?.ligneCommandes?._embedded?.ligneCommandes">
+              <td class="p-3">{{lc?.consomable?.listConsomable?.numeroArticle}}</td>
+              <td class="p-3">{{lc?.consomable?.listConsomable?.categorie?.designation}}</td>
+              <td class="p-3">{{lc?.consomable?.listConsomable?.designation}}</td>
+              <td class="p-3">{{lc?.quantite}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

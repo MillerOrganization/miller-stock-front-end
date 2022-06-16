@@ -41,6 +41,14 @@ import { ConsomablesUsedComponent } from './components/plaques-consomables/conso
 import { ConsomablesVentesComponent } from './components/plaques-consomables/ventes/consomables-ventes/consomables-ventes.component';
 import { PanierComponent } from './components/plaques-consomables/ventes/panier/panier.component';
 import { DetailCommandeComponent } from './components/plaques-consomables/ventes/detail-commande/detail-commande.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NzTableModule} from "ng-zorro-antd/table";
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -87,9 +95,11 @@ import { DetailCommandeComponent } from './components/plaques-consomables/ventes
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    NzTableModule
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

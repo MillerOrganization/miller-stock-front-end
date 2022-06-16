@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, NgModule, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PlaquesConsommablesService} from "../../../../../services/plaques-consommables.service";
 import {environment} from "../../../../../environments/environment";
 import {Observable} from "rxjs";
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 @Component({
   selector: 'app-detail-commande',
   templateUrl: './detail-commande.component.html',
   styleUrls: ['./detail-commande.component.css']
 })
+
 export class DetailCommandeComponent implements OnInit {
 
   /*url?:string;*/

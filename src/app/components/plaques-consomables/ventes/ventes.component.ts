@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {environment} from "../../../../environments/environment";
 import {PlaquesConsommablesService} from "../../../../services/plaques-consommables.service";
 import {AuthUserService} from "../../../../services/auth-user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-ventes',
@@ -13,10 +14,14 @@ export class VentesComponent implements OnInit {
   commercial:any;
 
   constructor(private pcService:PlaquesConsommablesService,
-              private authService:AuthUserService) { }
+              private authService:AuthUserService,
+              private router:Router) { }
 
   ngOnInit(): void {
-    this.getCommercial();
+    if(this.authService.isAuthenticated())
+      this.getCommercial();
+    else this.router.navigateByUrl('authenticate');
+
   }
 
   getCommercial(){

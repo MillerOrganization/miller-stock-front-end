@@ -25,16 +25,11 @@ export class AuthenticateComponent implements OnInit {
     this.authService.login(user).subscribe(data=>{
       localStorage.setItem("token",data?.['access-token']);
       this.router.navigateByUrl('');
-      console.log(this.authService.getDuration());
+      /*console.log(this.authService.getDuration());*/
       setTimeout(()=>{
-        localStorage.removeItem('token');
-        this.router.navigateByUrl('authenticate').then(()=> {
-            window.location.reload();
-          }
-        );
+        localStorage.clear();
+        this.router.navigateByUrl('authenticate');
       },this.authService.getDuration());
-    },error => {
-      console.log(error)
     });
   }
 

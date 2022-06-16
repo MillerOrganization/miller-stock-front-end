@@ -88,4 +88,12 @@ export class PanierComponent implements OnInit {
     });
 
   }
+
+  deleteConsomable(consomable: any) {
+    this.caddyService.removeConsomableFromCaddy(consomable.consomable);
+    this.caddy=this.caddyService.getCaddy();
+    if(this.caddy.consomables.length==0)
+      this.caddyService.removeCaddy();
+    this.router.navigateByUrl('commandes');
+  }
 }

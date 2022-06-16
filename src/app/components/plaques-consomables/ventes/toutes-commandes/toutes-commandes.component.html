@@ -13,7 +13,7 @@
           <td>{{commande?.date}}</td>
           <td>{{commande?.time}}</td>
           <td><button class="btn btn-outline-primary" (click)="detail(commande)"><span class="fa fa-info"></span></button></td>
-          <td><button class="fa fa-trash btn btn-outline-danger"></button></td>
+          <td><button class="fa fa-trash btn btn-outline-danger" (click)="delete(commande)"></button></td>
         </tr>
       </table>
     </div>

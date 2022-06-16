@@ -47,4 +47,11 @@ export class ToutesCommandesComponent implements OnInit {
     this.router.navigateByUrl("detail-commande/"+url);
   }
 
+  delete(commande: any) {
+    let conf=confirm("etes vous sure de suprimer?");
+    if(conf)
+    this.pcService.deleteResource(commande._links.self.href).subscribe(data=>{
+      this.onGetCommandes();
+    });
+  }
 }

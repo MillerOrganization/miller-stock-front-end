@@ -12,7 +12,7 @@
           <td>{{consomable?.consomable?.listConsomable?.designation}}</td>
           <td>{{consomable?.quantite}}</td>
           <td>
-            <button class="btn btn-outline-danger"><span class="fa fa-trash"></span></button>
+            <button class="btn btn-outline-danger" (click)="deleteConsomable(consomable)"><span class="fa fa-trash"></span></button>
           </td>
         </tr>
         </ng-container>

@@ -18,6 +18,7 @@ export class ConsomablesVentesComponent implements OnInit {
   ngOnInit(): void {
     this.getConsomables();
     this.caddy=this.caddyService.getCaddy();
+    /*this.caddyService.isConsomableInCaddy(this.consomables);*/
     /*console.log(this.consomables);*/
   }
 

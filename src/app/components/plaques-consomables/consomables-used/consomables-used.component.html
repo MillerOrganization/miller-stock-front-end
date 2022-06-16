@@ -1,17 +1,21 @@
-<p>consomables-used works!</p>
+<div class="card">
+  <div class="card-header">consommables utilisés</div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <tr>
+        <th>numero</th><th>designation</th><th>groupe</th><th>quantite consommée</th><th>date</th>
+        <th>time</th>
+      </tr>
 
-<table class="table table-striped">
-  <tr>
-    <th>numero d'article</th><th>designation</th><th>groupe article</th><th>quantite consommée</th><th>date</th>
-    <th>time</th>
-  </tr>
+      <tr *ngFor="let uc of utilisateurConsomables?._embedded?.utilisateurConsomables">
+        <td class="p-2">{{uc?.consomable?.listConsomable?.numeroArticle}}</td>
+        <td class="p-2">{{uc?.consomable?.listConsomable?.designation}}</td>
+        <td class="p-2">{{uc?.consomable?.listConsomable?.categorie?.designation}}</td>
+        <td class="p-2 text-center">{{uc?.quantite}}</td>
+        <td class="p-2">{{uc.date}}</td>
+        <td class="p-2">{{uc.time}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
 
-  <tr *ngFor="let uc of utilisateurConsomables?._embedded?.utilisateurConsomables">
-    <td>{{uc?.consomable?.listConsomable?.numeroArticle}}</td>
-    <td>{{uc?.consomable?.listConsomable?.designation}}</td>
-    <td>{{uc?.consomable?.listConsomable?.categorie?.designation}}</td>
-    <td>{{uc?.quantite}}</td>
-    <td>{{uc.date}}</td>
-    <td>{{uc.time}}</td>
-  </tr>
-</table>

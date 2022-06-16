@@ -68,6 +68,8 @@ export class AuthUserService {
     // @ts-ignore
     date.setUTCSeconds(parseInt(obj?.['exp']));*/
     // @ts-ignore
-    return (parseInt(obj?.['exp'])-parseInt(obj?.['iat']))*1000;
+    let duration=(parseInt(obj?.['exp'])-parseInt(obj?.['iat']))*1000;
+    console.log(duration);
+    return duration;
   }
 }

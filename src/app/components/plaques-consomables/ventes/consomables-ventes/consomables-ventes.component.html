@@ -1,7 +1,7 @@
 <div class="container" >
   <div class="row">
     <div class="col-md-12 col-lg-4 mt-2" *ngFor="let consomable of consomables?._embedded?.consomables">
-      <div class="card">
+      <div class="card" *ngIf="!caddyService.isConsomableInCaddy(consomable)">
         <div class="card-header">{{consomable?.listConsomable?.designation}}</div>
         <div class="card-body">
           <ul class="list-group">

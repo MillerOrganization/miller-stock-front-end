@@ -3,6 +3,7 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {PlaquesConsommablesService} from "../../../../../services/plaques-consommables.service";
 import {environment} from "../../../../../environments/environment";
 import {AuthUserService} from "../../../../../services/auth-user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-commandes',
@@ -16,7 +17,8 @@ export class CommandesComponent implements OnInit {
   commandes:any;
   constructor(private modalService:NgbModal,
               private pcService:PlaquesConsommablesService,
-              private authService:AuthUserService) { }
+              private authService:AuthUserService,
+              private router:Router) { }
 
 
 
@@ -68,4 +70,8 @@ export class CommandesComponent implements OnInit {
 
   }
 
+  detail(commande: any) {
+    let url=btoa(commande._links.self.href);
+    this.router.navigateByUrl("detail-commande/"+url);
+  }
 }
