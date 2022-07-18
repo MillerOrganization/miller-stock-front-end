@@ -32,6 +32,9 @@ import {VentesComponent} from "./components/plaques-consomables/ventes/ventes.co
 import {
   DetailCommandeComponent
 } from "./components/plaques-consomables/ventes/detail-commande/detail-commande.component";
+import {
+  CommandesClientComponent
+} from "./components/plaques-consomables/ventes/clients/commandes-client/commandes-client.component";
 
 
 const routes: Routes = [
@@ -51,7 +54,8 @@ const routes: Routes = [
   {path:"authenticate",component:AuthenticateComponent},
   {path:"",component:PlaquesConsomablesComponent},
   {path:"ventes",component:VentesComponent},
-  {path:"detail-commande/:url",component:DetailCommandeComponent}
+  {path:"detail-commande/:url",component:DetailCommandeComponent},
+  {path:"commandes-client/:url",component:CommandesClientComponent}
 ];
 
 @NgModule({

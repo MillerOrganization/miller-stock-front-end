@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
 import {AuthUserService} from "../../../../services/auth-user.service";
 import {Router} from "@angular/router";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-authenticate',
@@ -25,12 +26,10 @@ export class AuthenticateComponent implements OnInit {
     this.authService.login(user).subscribe(data=>{
       localStorage.setItem("token",data?.['access-token']);
       this.router.navigateByUrl('');
-      /*console.log(this.authService.getDuration());*/
-      setTimeout(()=>{
-        localStorage.clear();
-        this.router.navigateByUrl('authenticate');
-      },this.authService.getDuration());
     });
+    setInterval(()=> {
+      this.authService.logout()
+    },environment.TIMEOUT);
   }
 
 }

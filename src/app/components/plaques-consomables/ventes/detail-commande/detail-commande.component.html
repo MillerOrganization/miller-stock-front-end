@@ -26,19 +26,23 @@
       <div class="card">
         <div class="card-header">lignes commandes</div>
         <div class="card-body">
-          <table class="table">
+          <table class="table table-striped">
+            <thead>
             <tr>
               <th>numero</th>
               <th>groupe</th>
               <th>designation</th>
               <th>qte</th>
             </tr>
+            </thead>
+            <tbody>
             <tr *ngFor="let lc of commande?.ligneCommandes?._embedded?.ligneCommandes">
-              <td class="p-3">{{lc?.consomable?.listConsomable?.numeroArticle}}</td>
-              <td class="p-3">{{lc?.consomable?.listConsomable?.categorie?.designation}}</td>
-              <td class="p-3">{{lc?.consomable?.listConsomable?.designation}}</td>
-              <td class="p-3">{{lc?.quantite}}</td>
+              <td>{{lc?.consomable?.listConsomable?.numeroArticle}}</td>
+              <td>{{lc?.consomable?.listConsomable?.categorie?.designation}}</td>
+              <td>{{lc?.consomable?.listConsomable?.designation}}</td>
+              <td>{{lc?.quantite}}</td>
             </tr>
+            </tbody>
           </table>
         </div>
       </div>

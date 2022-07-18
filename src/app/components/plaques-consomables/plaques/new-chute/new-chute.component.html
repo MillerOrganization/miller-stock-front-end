@@ -5,6 +5,7 @@
       <form #f="ngForm" (ngSubmit)="onAddPlaque(f)">
         <label class="form-label">designation:</label>
         <select type="number" class="form-control" name="listPlaques" ngModel>
+          <option value="" disabled selected>choisir une plaque</option>
           <option *ngFor="let p of listPlaques?._embedded?.listPlaqueses" [value]="p.id">
             {{p.designation}}
           </option>

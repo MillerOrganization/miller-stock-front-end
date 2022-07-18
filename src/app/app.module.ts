@@ -47,6 +47,10 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NzTableModule} from "ng-zorro-antd/table";
+import { ClientsComponent } from './components/plaques-consomables/ventes/clients/clients.component';
+import { AddClientComponent } from './components/plaques-consomables/ventes/clients/add-client/add-client.component';
+import { CommandesClientComponent } from './components/plaques-consomables/ventes/clients/commandes-client/commandes-client.component';
+import { UpdateClientComponent } from './components/plaques-consomables/ventes/clients/update-client/update-client.component';
 
 registerLocaleData(en);
 
@@ -87,7 +91,11 @@ registerLocaleData(en);
     ConsomablesUsedComponent,
     ConsomablesVentesComponent,
     PanierComponent,
-    DetailCommandeComponent
+    DetailCommandeComponent,
+    ClientsComponent,
+    AddClientComponent,
+    CommandesClientComponent,
+    UpdateClientComponent
   ],
   imports: [
     BrowserModule,

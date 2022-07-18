@@ -1,24 +1,30 @@
-
 <div class="card">
   <div class="card-header">panier</div>
   <div class="card-body">
     <ng-container *ngIf="caddy!=null">
       <table class="table">
-        <tr><th>numero</th><th>groupe</th><th>designation</th><th>quantite</th><th>actions</th></tr>
-        <ng-container *ngIf="caddy!=null">
-        <tr  *ngFor="let consomable of caddy?.consomables">
+        <tr>
+          <th>numero</th>
+          <th>groupe</th>
+          <th>designation</th>
+          <th>quantite</th>
+          <th>actions</th>
+        </tr>
+        <tr *ngFor="let consomable of caddy?.consomables">
           <td>{{consomable?.consomable?.listConsomable?.numeroArticle}}</td>
           <td>{{consomable?.consomable?.listConsomable?.categorie.designation}}</td>
           <td>{{consomable?.consomable?.listConsomable?.designation}}</td>
           <td>{{consomable?.quantite}}</td>
           <td>
-            <button class="btn btn-outline-danger" (click)="deleteConsomable(consomable)"><span class="fa fa-trash"></span></button>
+            <button class="btn btn-outline-danger" (click)="deleteConsomable(consomable)"><span
+              class="fa fa-trash"></span></button>
           </td>
         </tr>
-        </ng-container>
       </table>
-      <button class="btn btn-danger me-2" (click)="cancel()">annuler</button><button (click)="saveOrder()"
-      class="btn btn-success">valider</button>
+      <button class="btn btn-danger me-2" (click)="cancel()">annuler</button>
+      <button (click)="saveOrder()"
+              class="btn btn-success">valider
+      </button>
     </ng-container>
   </div>
 </div>

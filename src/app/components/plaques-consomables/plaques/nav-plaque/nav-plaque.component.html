@@ -7,8 +7,8 @@
   <ul class="navbar navbar-nav ms-lg-auto">
     <li>
       <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline">
-        <input ngModel name="largeur" placeholder="largeur" type="number" class="w-25" />
-        <input ngModel name="longueur" placeholder="longueur" type="number" class="w-25" />
+        <input ngModel class="form-control-sm" name="largeur" placeholder="largeur" type="number" class="w-25" />
+        <input ngModel class="form-control-sm" name="longueur" placeholder="longueur" type="number" class="w-25" />
         <button class="btn btn-sm btn-outline-success m-lg-2"><span class="fa fa-search"></span></button>
       </form>
     </li>

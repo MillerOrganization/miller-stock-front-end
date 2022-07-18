@@ -1,10 +1,20 @@
 <app-nav-plaque (newItemEvent)="onSearch($event)"></app-nav-plaque>
 <div class="p-4">
   <ng-container>
-    <table class="table">
+    <table class="table table-striped">
+      <thead>
       <tr>
-        <th>numero article</th><th>designation</th><th>groupe d'article</th><th>largeur</th><th>longueur</th><th>surface</th><th>type</th><th>quantite</th>
+        <th>numero article</th>
+        <th>designation</th>
+        <th>groupe d'article</th>
+        <th>largeur</th>
+        <th>longueur</th>
+        <th>surface</th>
+        <th>type</th>
+        <th>quantite</th>
       </tr>
+      </thead>
+      <tbody>
       <tr *ngFor="let plaque of plaques">
         <td>{{plaque?.listPlaques?.['numeroArticle']}}</td>
         <td>{{plaque?.listPlaques?.['designation']}}</td>
@@ -21,18 +31,18 @@
         </ng-template>
         <td>{{plaque?.type}}</td>
         <td>{{plaque?.quantite}}</td>
-        <ng-container *ngIf="authService.roleMatches('responsable production')">
-          <td>
-            <button class="btn btn-outline-danger" (click)="onDeletePlaque(plaque)"><span class="fa fa-trash"></span></button>
-          </td>
-          <td>
-            <button class="btn btn-outline-warning m-lg-2" (click)="onUpdatePlaque(plaque)"><span class="fa fa-edit"></span></button>
-          </td>
-        </ng-container>
         <td>
-          <button class="btn btn-outline-success" [ngClass]="plaque.quantite==0?'disabled':''" (click)="onUsePlaque(plaque)">consommer</button>
+          <ng-container *ngIf="authService.roleMatches('responsable production')">
+            <button class="btn btn-danger" (click)="onDeletePlaque(plaque)"><span class="fa fa-trash"></span></button>
+            <button class="btn btn-warning m-lg-2" (click)="onUpdatePlaque(plaque)"><span class="fa fa-edit"></span>
+            </button>
+          </ng-container>
+          <button class="btn btn-success" [ngClass]="plaque.quantite==0?'disabled':''" (click)="onUsePlaque(plaque)">
+            consommer
+          </button>
         </td>
       </tr>
+      </tbody>
     </table>
   </ng-container>
 </div>

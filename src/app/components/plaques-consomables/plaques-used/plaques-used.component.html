@@ -2,23 +2,26 @@
   <div class="card-header">plaques consommées</div>
   <div class="card-body">
     <table class="table table-striped">
+      <thead>
       <tr>
-        <th class="p-2">numero</th>
-        <th class="p-2">designation</th>
-        <th class="p-2">groupe article</th>
-        <th class="p-2">quantite consommée</th>
-        <th class="p-2">date</th>
-        <th class="p-2">time</th>
+        <th>numero</th>
+        <th>designation</th>
+        <th>groupe article</th>
+        <th>quantite consommée</th>
+        <th>date</th>
+        <th>time</th>
       </tr>
-
+      </thead>
+      <tbody>
       <tr *ngFor="let up of utilisateurPlaques?._embedded?.utilisateurPlaques">
-        <td class="p-2">{{up?.plaque?.listPlaques?.numeroArticle}}</td>
-        <td class="p-2">{{up?.plaque?.listPlaques?.designation}}</td>
-        <td class="p-2">{{up?.plaque?.listPlaques?.groupeArticle?.designation}}</td>
-        <td class="p-2">{{up?.quantite}}</td>
-        <td class="p-2">{{up.date}}</td>
-        <td class="p-2">{{up.time}}</td>
+        <td>{{up?.plaque?.listPlaques?.numeroArticle}}</td>
+        <td>{{up?.plaque?.listPlaques?.designation}}</td>
+        <td>{{up?.plaque?.listPlaques?.groupeArticle?.designation}}</td>
+        <td>{{up?.quantite}}</td>
+        <td>{{up.date}}</td>
+        <td>{{up.time}}</td>
       </tr>
+      </tbody>
     </table>
   </div>
 </div>

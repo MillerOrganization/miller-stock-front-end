@@ -1,0 +1,60 @@
+<ng-template #mymodalAdd let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">ajouter un client</h4>
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span class="fa fa-close"></span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-add-client (newItemEvent)="onClose($event,modal)"></app-add-client>
+  </div>
+</ng-template>
+
+<ng-template #mymodalUpdate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">ajouter un client</h4>
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span class="fa fa-close"></span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!--<app-add-client (newItemEvent)="onClose($event,modal)"></app-add-client>-->
+    <app-update-client [url]="clientUrl"  (newItemEvent)="onClose($event,modal)"></app-update-client>
+  </div>
+</ng-template>
+
+<div class="container">
+  <div class="row">
+    <div class="card">
+      <div class="card-header">clients</div>
+      <div class="card-body">
+        <button class="btn btn-primary" (click)="open(mymodalAdd)"><span class="fa fa-plus"></span></button>
+        <form #f="ngForm" (ngSubmit)="onSearch(f)">
+          <input type="text" class="input-group-sm" ngModel name="nom">
+          <button class="btn btn-outline-success"><span class="fa fa-search"></span></button>
+        </form>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>clients</th>
+            <th>commandes</th>
+            <th>actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let client of clients?._embedded?.clients">
+            <td>{{client.nom}}</td>
+            <td><button class="btn btn-info" (click)="commandes(client)">
+              <span class="fa fa-cart-arrow-down"></span></button></td>
+            <td>
+              <button (click)="delete(client)" class="btn btn-danger fa fa-trash"></button>
+              <button class="btn btn-warning fa fa-edit ms-2"
+              (click)="openUpdate(mymodalUpdate,client)"></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

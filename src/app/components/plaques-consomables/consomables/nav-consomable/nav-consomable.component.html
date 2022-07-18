@@ -6,7 +6,7 @@
   <ul class="navbar navbar-nav ms-lg-auto">
     <li>
       <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline">
-        <input ngModel name="keyword" placeholder="keyword" type="text"/>
+        <input ngModel class="form-control-sm" name="keyword" placeholder="keyword" type="text"/>
         <button class="btn btn-sm btn-outline-success m-lg-2"><span class="fa fa-search"></span></button>
       </form>
     </li>

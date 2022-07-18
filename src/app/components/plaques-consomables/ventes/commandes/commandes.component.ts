@@ -4,6 +4,7 @@ import {PlaquesConsommablesService} from "../../../../../services/plaques-consom
 import {environment} from "../../../../../environments/environment";
 import {AuthUserService} from "../../../../../services/auth-user.service";
 import {Router} from "@angular/router";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-commandes',
@@ -73,5 +74,13 @@ export class CommandesComponent implements OnInit {
   detail(commande: any) {
     let url=btoa(commande._links.self.href);
     this.router.navigateByUrl("detail-commande/"+url);
+  }
+
+  onSearch(f: NgForm) {
+    this.pcService.getResources(environment.host+'/commandes/search/byClient?nom='+f.value.nom)
+      .subscribe(data=>{
+        this.commandes=data;
+        this.getClientForCommandes(this.commandes);
+      });
   }
 }

@@ -39,6 +39,7 @@ export class PanierComponent implements OnInit {
   }
 
   cancel() {
+    this.finishCart();
 
   }
 

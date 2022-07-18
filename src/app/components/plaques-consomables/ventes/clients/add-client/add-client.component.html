@@ -1,0 +1,7 @@
+<ng-container *ngIf="addClientFormGroup">
+<form [formGroup]="addClientFormGroup">
+  <label class="form-label">Nom:</label>
+  <input class="form-control" type="text" formControlName="nom">
+  <button (click)="onAddClient()" class="btn btn-primary mt-2">ajouter</button>
+</form>
+</ng-container>

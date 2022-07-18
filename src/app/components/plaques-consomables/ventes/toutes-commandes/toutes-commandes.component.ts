@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {environment} from "../../../../../environments/environment";
 import {PlaquesConsommablesService} from "../../../../../services/plaques-consommables.service";
 import {Router} from "@angular/router";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-toutes-commandes',
@@ -53,5 +54,13 @@ export class ToutesCommandesComponent implements OnInit {
     this.pcService.deleteResource(commande._links.self.href).subscribe(data=>{
       this.onGetCommandes();
     });
+  }
+
+  onSearch(f: NgForm) {
+    this.pcService.getResources(environment.host+'/commandes/search/byClient?nom='+f.value.nom)
+      .subscribe(data=>{
+        this.commandes=data;
+        this.getClientForCommandes(this.commandes);
+      });
   }
 }

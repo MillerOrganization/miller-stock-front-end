@@ -3,13 +3,15 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../environments/environment";
 import {PlaquesConsommablesService} from "./plaques-consommables.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthUserService {
 
-  constructor(private http:HttpClient,private pcService:PlaquesConsommablesService) { }
+  constructor(private http:HttpClient,private pcService:PlaquesConsommablesService,
+              private router:Router) { }
 
   login(resource:any):Observable<any>{
     return this.http.post(environment.host+"/login",resource,{
@@ -71,5 +73,10 @@ export class AuthUserService {
     let duration=(parseInt(obj?.['exp'])-parseInt(obj?.['iat']))*1000;
     console.log(duration);
     return duration;
+  }
+
+  logout(){
+    localStorage.clear();
+    this?.router?.navigateByUrl('authenticate');
   }
 }

@@ -10,11 +10,6 @@
             {{p.designation}}
           </option>
         </select>
-        <!--<input type="hidden"  [(ngModel)]="plaque.id"  name="id">
-        <label class="form-label">numero d'article</label>
-        <input  type="number" class="form-control" [(ngModel)]="plaque.numeroArticle" name="numeroArticle">
-        <label class="form-label">designation:</label>
-        <input  type="text" class="form-control" [(ngModel)]="plaque.designation" name="designation">
         <label class="form-label">groupe d'article:</label>-->
         <input type="hidden" [(ngModel)]="plaque.type" name="type">
         <ng-template [ngIf]="plaque?.taille" [ngIfElse]="chute">

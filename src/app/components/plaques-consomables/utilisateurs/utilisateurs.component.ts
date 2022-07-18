@@ -17,7 +17,7 @@ export class UtilisateursComponent implements OnInit {
               public authUserService:AuthUserService) { }
 
   ngOnInit(): void {
-    if(this.authUserService.isAuthenticated())
+    if(this.authUserService.isAuthenticated() && this.authUserService.roleMatches('admin'))
         this.onGetAllUtilisateurs();
     else this.router.navigateByUrl('authenticate');
   }

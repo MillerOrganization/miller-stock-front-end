@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PlaquesConsommablesService} from "../../../../../services/plaques-consommables.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {environment} from "../../../../../environments/environment";
+import {AuthUserService} from "../../../../../services/auth-user.service";
 
 @Component({
   selector: 'app-add-utilisateur',
@@ -16,22 +17,25 @@ export class AddUtilisateurComponent implements OnInit {
   constructor(private activatedRoute:ActivatedRoute,
               private plaquesConsomablesService:PlaquesConsommablesService,
               private fb:FormBuilder,
-              private router:Router) { }
+              private router:Router,
+              private authUserService:AuthUserService) { }
 
   ngOnInit(): void {
-    this.userFormGroup = this.fb.group({
-      nom: ['', Validators.required],
-      prenom: ['', Validators.required],
-      username:['',Validators.required],
-      mail:['',Validators.required],
-      password:['',Validators.required],
-      phone:['',Validators.required],
-      dateNaissance:['',Validators.required],
-      roles:[[],Validators.required]
-    });
-    this.plaquesConsomablesService.getResources(environment.host+"/roles").subscribe(data=>{
-      this.roles=data._embedded.roles;
-    });
+    if(this.authUserService.isAuthenticated() && this.authUserService.roleMatches('admin')){
+      this.userFormGroup = this.fb.group({
+        nom: ['', Validators.required],
+        prenom: ['', Validators.required],
+        username:['',Validators.required],
+        mail:['',Validators.required],
+        password:['',Validators.required],
+        phone:['',Validators.required],
+        dateNaissance:['',Validators.required],
+        roles:[[],Validators.required]
+      });
+      this.plaquesConsomablesService.getResources(environment.host+"/roles").subscribe(data=>{
+        this.roles=data._embedded.roles;
+      });
+    }
   }
 
   onAddUser() {

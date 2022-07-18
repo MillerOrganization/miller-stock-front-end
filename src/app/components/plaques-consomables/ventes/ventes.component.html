@@ -18,6 +18,14 @@
         <ng-template [ngSwitchCase]="'panier'">
           <app-panier [commercial]="commercial"></app-panier>
         </ng-template>
+        <ng-template [ngSwitchCase]="'clients'">
+          <!--<app-panier [commercial]="commercial"></app-panier>-->
+          <app-clients (newItemEvent)="intercept($event)"></app-clients>
+        </ng-template>
+        <ng-template [ngSwitchCase]="'client-commandes'">
+          <!--<app-panier [commercial]="commercial"></app-panier>-->
+          <app-commandes-client [url]="urlCli"></app-commandes-client>
+        </ng-template>
       </ng-container>
 
     </div>

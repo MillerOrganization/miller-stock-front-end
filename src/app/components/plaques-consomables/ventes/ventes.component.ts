@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {environment} from "../../../../environments/environment";
 import {PlaquesConsommablesService} from "../../../../services/plaques-consommables.service";
 import {AuthUserService} from "../../../../services/auth-user.service";
@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class VentesComponent implements OnInit {
   clickedItem: string="commandes";
   commercial:any;
+  urlCli:string='';
 
   constructor(private pcService:PlaquesConsommablesService,
               private authService:AuthUserService,
@@ -34,5 +35,10 @@ export class VentesComponent implements OnInit {
 
   change(event: any) {
     this.clickedItem=event;
+  }
+
+  intercept(event: any) {
+    this.urlCli=event.client;
+    this.clickedItem=event.comp;
   }
 }

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  host:"http://localhost:8081"
+  host:"http://localhost:8081",
+  TIMEOUT:60*60*1000
 };
 
 /*

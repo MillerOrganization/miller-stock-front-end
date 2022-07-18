@@ -12,7 +12,7 @@
 
 <ng-template #mymodalUpdate let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" >modifier un consommable</h4>
+    <h4 class="modal-title">modifier un consommable</h4>
     <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span class="fa fa-close"></span>
     </button>
@@ -25,31 +25,39 @@
 
 
 <app-nav-consomable (newItemEvent)="intercept($event,mymodalAdd)"
-   ></app-nav-consomable>
+></app-nav-consomable>
 
 <div class="p-4">
   <ng-container>
-    <table class="table">
+    <table class="table table-striped">
+      <thead>
       <tr>
-        <th>numero article</th><th>designation</th><th>groupe d'article</th><th>quantite</th>
+        <th>numero article</th>
+        <th>designation</th>
+        <th>groupe d'article</th>
+        <th>quantite</th>
       </tr>
+      </thead>
+      <tbody>
       <tr *ngFor="let consomable of consomables?._embedded.consomables">
         <td>{{consomable?.listConsomable?.['numeroArticle']}}</td>
         <td>{{consomable?.listConsomable?.['designation']}}</td>
         <td>{{consomable?.listConsomable?.categorie?.designation}}</td>
         <td>{{consomable?.quantite}}</td>
-        <ng-container *ngIf="authService.roleMatches('responsable production')">
-          <td>
-            <button class="btn btn-outline-danger" (click)="onDeleteConsomable(consomable)"><span class="fa fa-trash"></span></button>
-          </td>
-          <td>
-            <button class="btn btn-outline-warning m-lg-2" (click)="openUpdate(mymodalUpdate,consomable)"><span class="fa fa-edit"></span></button>
-          </td>
-          </ng-container>
+
         <td>
-          <button class="btn btn-outline-success" [ngClass]="consomable.quantite==0?'disabled':''" (click)="onUseConsomable(consomable)">consommer</button>
+          <ng-container *ngIf="authService.roleMatches('responsable production')">
+            <button class="btn btn-danger" (click)="onDeleteConsomable(consomable)"><span
+              class="fa fa-trash"></span></button>
+            <button class="btn btn-warning m-lg-2" (click)="openUpdate(mymodalUpdate,consomable)"><span
+              class="fa fa-edit"></span></button>
+          </ng-container>
+          <button class="btn btn-success" [ngClass]="consomable.quantite==0?'disabled':''"
+                  (click)="onUseConsomable(consomable)">consommer
+          </button>
         </td>
       </tr>
+      </tbody>
     </table>
   </ng-container>
 </div>

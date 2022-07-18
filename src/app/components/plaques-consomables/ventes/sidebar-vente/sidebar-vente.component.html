@@ -9,4 +9,7 @@
   <li class="list-group-item clickable"
       [ngClass]="clickedItem=='toutes-commandes'?'active':''" *ngIf="authService.roleMatches('admin')"
       (click)="emitEvent('toutes-commandes')"><a>toutes les commandes</a></li>
+  <li class="list-group-item clickable"
+      [ngClass]="clickedItem=='clients'?'active':''" *ngIf="authService.roleMatches('admin')"
+      (click)="emitEvent('clients')"><a>clients</a></li>
 </ul>
